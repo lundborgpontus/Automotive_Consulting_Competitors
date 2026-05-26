@@ -1,0 +1,2 @@
+# Automotive_Consulting_Competitors
+Competitors within automotive consulting
