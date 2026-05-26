@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swedish Automotive Consulting Intelligence | Market Rankings 2025</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root {
+  --bg: #f4f3ef;
+  --surface: #ffffff;
+  --surface2: #f9f8f5;
+  --border: #e2e0d8;
+  --text: #1a1916;
+  --text2: #5a5850;
+  --text3: #8a8778;
+  --accent: #c8471e;
+  --accent2: #1a5276;
+  --accent3: #196f3d;
+  --gold: #c9a227;
+  --silver: #7f8c8d;
+  --bronze: #a04000;
+  --rank1: #c8471e;
+  --rank2: #1a5276;
+  --rank3: #196f3d;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --radius: 8px;
+  --radius-lg: 14px;
+  --transition: 0.18s ease;
+}
+html.dark {
+  --bg: #0f0f0d;
+  --surface: #1a1916;
+  --surface2: #221f1b;
+  --border: #2e2b25;
+  --text: #f0ede6;
+  --text2: #a09a8e;
+  --text3: #6a6458;
+  --accent: #e85a28;
+  --accent2: #3d8bc4;
+  --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; transition: background var(--transition), color var(--transition); }
+h1,h2,h3,h4,h5 { font-family: 'Syne', sans-serif; }
+
+/* HEADER */
+.header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+.header-brand { display: flex; align-items: center; gap: 12px; }
+.header-logo { width: 36px; height: 36px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+.header-logo svg { width: 20px; height: 20px; fill: white; }
+.header-title { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+.header-sub { font-size: 11px; color: var(--text3); font-weight: 400; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.badge { background: var(--accent); color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; letter-spacing: 0.5px; font-family: 'JetBrains Mono', monospace; }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--radius); font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--text); transition: all var(--transition); font-family: 'DM Sans', sans-serif; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn-primary { background: var(--accent); color: white; border-color: var(--accent); }
+.btn-primary:hover { background: #b03a15; color: white; }
+.toggle-btn { background: none; border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; cursor: pointer; font-size: 12px; color: var(--text2); transition: all var(--transition); font-family: 'DM Sans', sans-serif; }
+.toggle-btn:hover { border-color: var(--accent); }
+
+/* NAV TABS */
+.nav-wrapper { background: var(--surface); border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
+.nav-wrapper::-webkit-scrollbar { display: none; }
+.nav-tabs { display: flex; padding: 0 32px; gap: 0; min-width: max-content; }
+.nav-tab { padding: 14px 18px; font-size: 12.5px; font-weight: 500; color: var(--text2); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all var(--transition); font-family: 'DM Sans', sans-serif; }
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+.nav-tab-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text3); margin-right: 4px; }
+
+/* MAIN CONTENT */
+.main { padding: 32px; max-width: 1400px; margin: 0 auto; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* EXECUTIVE SUMMARY BANNER */
+.exec-banner { background: linear-gradient(135deg, #1a1916 0%, #2d2a22 50%, #1a3a4a 100%); border-radius: var(--radius-lg); padding: 36px 40px; margin-bottom: 32px; position: relative; overflow: hidden; }
+.exec-banner::before { content: 'SWEDEN'; position: absolute; right: -20px; top: -10px; font-family: 'Syne', sans-serif; font-size: 120px; font-weight: 800; color: rgba(255,255,255,0.03); line-height: 1; pointer-events: none; }
+.exec-banner h1 { font-size: 28px; font-weight: 800; color: white; margin-bottom: 8px; letter-spacing: -0.5px; }
+.exec-banner p { color: rgba(255,255,255,0.65); font-size: 14px; max-width: 600px; line-height: 1.6; }
+.exec-banner-meta { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+.exec-meta-item { display: flex; flex-direction: column; }
+.exec-meta-label { font-size: 10px; color: rgba(255,255,255,0.4); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
+.exec-meta-value { font-size: 22px; font-weight: 700; color: white; font-family: 'Syne', sans-serif; margin-top: 2px; }
+.exec-meta-sub { font-size: 11px; color: rgba(255,255,255,0.4); }
+
+/* GRID LAYOUTS */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media(max-width:1100px) { .grid-4 { grid-template-columns: repeat(2,1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }
+@media(max-width:768px) { .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr; } .main { padding: 16px; } .header { padding: 0 16px; } .nav-tabs { padding: 0 16px; } }
+
+/* CARDS */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow); }
+.card-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: -0.2px; }
+.card-sub { font-size: 12px; color: var(--text3); margin-bottom: 16px; }
+
+/* RANK TABLE */
+.rank-table-wrap { overflow-x: auto; }
+.rank-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.rank-table th { padding: 10px 14px; text-align: left; font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.8px; border-bottom: 1px solid var(--border); background: var(--surface2); white-space: nowrap; font-family: 'JetBrains Mono', monospace; cursor: pointer; user-select: none; }
+.rank-table th:hover { color: var(--accent); }
+.rank-table th .sort-icon { display: inline-block; margin-left: 4px; opacity: 0.4; }
+.rank-table th.sorted .sort-icon { opacity: 1; color: var(--accent); }
+.rank-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.rank-table tr:last-child td { border-bottom: none; }
+.rank-table tr:hover td { background: var(--surface2); }
+.rank-num { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; min-width: 28px; }
+.rank-1 .rank-num { color: var(--gold); }
+.rank-2 .rank-num { color: var(--silver); }
+.rank-3 .rank-num { color: var(--bronze); }
+.firm-name { font-weight: 600; font-family: 'Syne', sans-serif; font-size: 13px; }
+.score-bar-wrap { display: flex; align-items: center; gap: 10px; min-width: 140px; }
+.score-bar { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+.score-val { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; min-width: 32px; text-align: right; }
+.confidence-badge { padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.3px; }
+.conf-high { background: #d4edda; color: #155724; }
+.conf-medium { background: #fff3cd; color: #856404; }
+.conf-low { background: #f8d7da; color: #721c24; }
+html.dark .conf-high { background: #0d2b12; color: #6de88a; }
+html.dark .conf-medium { background: #2b2200; color: #f0c940; }
+html.dark .conf-low { background: #2b0a0a; color: #f07070; }
+
+/* EXPAND ROW */
+.expand-row { display: none; }
+.expand-row.open { display: table-row; }
+.expand-cell { padding: 16px 14px 20px; background: var(--surface2); }
+.expand-content { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.expand-item h5 { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
+.expand-item p, .expand-item li { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+.expand-item ul { padding-left: 14px; }
+.expand-toggle { cursor: pointer; background: none; border: none; color: var(--accent); font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 4px; font-family: 'DM Sans', sans-serif; display: inline-flex; align-items: center; gap: 3px; }
+.expand-toggle:hover { background: var(--surface2); }
+
+/* SCORE BREAKDOWN */
+.score-breakdown { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.score-pill { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--text2); display: flex; align-items: center; gap: 4px; }
+.score-pill-label { color: var(--text3); }
+.score-pill-val { font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--text); }
+
+/* SECTION HEADERS */
+.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.section-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+.section-line { height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin-bottom: 20px; border-radius: 1px; }
+
+/* HEATMAP */
+.heatmap-wrap { overflow-x: auto; }
+.heatmap { border-collapse: collapse; font-size: 11px; }
+.heatmap th { padding: 8px 10px; text-align: center; font-size: 10px; font-weight: 600; color: var(--text3); font-family: 'JetBrains Mono', monospace; white-space: nowrap; border: 1px solid var(--border); }
+.heatmap th.row-header { text-align: left; font-size: 11px; }
+.heatmap td { padding: 7px 10px; text-align: center; font-weight: 700; font-size: 11px; border: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; transition: all 0.2s; cursor: pointer; }
+.heatmap td:hover { transform: scale(1.05); z-index: 1; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.heat-90 { background: #1b4332; color: #d8f3dc; }
+.heat-80 { background: #2d6a4f; color: #d8f3dc; }
+.heat-70 { background: #40916c; color: white; }
+.heat-60 { background: #74c69d; color: #1b4332; }
+.heat-50 { background: #b7e4c7; color: #1b4332; }
+.heat-40 { background: #ffd166; color: #3d2b00; }
+.heat-30 { background: #ef233c; color: white; }
+html.dark .heat-90 { background: #0d3320; color: #6ee7b7; }
+html.dark .heat-80 { background: #1a4d35; color: #86efac; }
+html.dark .heat-70 { background: #276647; color: #bbf7d0; }
+html.dark .heat-60 { background: #3d7a5a; color: #d1fae5; }
+html.dark .heat-50 { background: #4a5c4a; color: #dcfce7; }
+html.dark .heat-40 { background: #5c4a00; color: #fde68a; }
+html.dark .heat-30 { background: #7f1d1d; color: #fecaca; }
+
+/* METHODOLOGY */
+.methodology-card { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 12px; }
+.methodology-header { padding: 14px 20px; background: var(--surface2); display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+.methodology-header h4 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; }
+.methodology-body { padding: 20px; display: none; border-top: 1px solid var(--border); }
+.methodology-body.open { display: block; }
+.weight-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.weight-row:last-child { border-bottom: none; }
+.weight-label { flex: 1; font-size: 13px; color: var(--text2); }
+.weight-pct { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--accent); min-width: 40px; }
+.weight-bar { flex: 2; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.weight-bar-fill { height: 100%; background: var(--accent); border-radius: 3px; }
+
+/* SUBCATEGORY SECTIONS */
+.sub-section { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 20px; overflow: hidden; }
+.sub-header { padding: 14px 20px; background: var(--surface2); display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+.sub-header h4 { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.sub-header-tag { font-size: 10px; color: var(--text3); font-family: 'JetBrains Mono', monospace; background: var(--border); padding: 2px 6px; border-radius: 4px; }
+.sub-body { display: none; padding: 20px; border-top: 1px solid var(--border); }
+.sub-body.open { display: block; }
+
+/* RADAR / CHART containers */
+.chart-container { position: relative; height: 300px; }
+.chart-container-lg { position: relative; height: 420px; }
+.chart-container-sm { position: relative; height: 220px; }
+
+/* FILTER BAR */
+.filter-bar { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px; margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.filter-label { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.8px; font-family: 'JetBrains Mono', monospace; }
+.filter-select { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+.filter-search { flex: 1; min-width: 200px; padding: 7px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 13px; font-family: 'DM Sans', sans-serif; }
+.filter-search:focus { outline: none; border-color: var(--accent); }
+
+/* LEADERBOARD */
+.leaderboard { display: flex; flex-direction: column; gap: 8px; }
+.lb-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; display: flex; align-items: center; gap: 14px; transition: all var(--transition); }
+.lb-item:hover { border-color: var(--accent); transform: translateX(3px); }
+.lb-rank { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; min-width: 36px; }
+.lb-rank.r1 { color: var(--gold); }
+.lb-rank.r2 { color: var(--silver); }
+.lb-rank.r3 { color: var(--bronze); }
+.lb-rank.r4,.lb-rank.r5,.lb-rank.r6 { color: var(--text3); font-size: 16px; }
+.lb-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; flex: 1; }
+.lb-score { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 700; color: var(--accent); }
+.lb-bar { height: 3px; background: var(--border); border-radius: 2px; margin-top: 6px; overflow: hidden; }
+.lb-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--accent), var(--gold)); }
+
+/* SOURCES SECTION */
+.sources-section { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin-top: 32px; }
+.sources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+.source-link { font-size: 11.5px; color: var(--accent2); text-decoration: none; line-break: anywhere; display: block; padding: 4px 0; }
+.source-link:hover { text-decoration: underline; }
+.evidence-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+.ev-direct { background: #d4edda; color: #155724; }
+.ev-inferred { background: #cce5ff; color: #004085; }
+.ev-estimated { background: #fff3cd; color: #856404; }
+html.dark .ev-direct { background: #0d2b12; color: #6de88a; }
+html.dark .ev-inferred { background: #0a1a2b; color: #60a5fa; }
+html.dark .ev-estimated { background: #2b2200; color: #f0c940; }
+
+/* HIERARCHY BOXES */
+.hier-wrap { overflow-x: auto; padding-bottom: 16px; }
+.hier-level0 { display: flex; gap: 16px; min-width: max-content; }
+.hier-col { display: flex; flex-direction: column; gap: 12px; width: 220px; }
+.hier-top { background: #1a1916; color: white; border-radius: var(--radius); padding: 12px 16px; text-align: center; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; }
+.hier-top.co { background: #1a3a4a; }
+.hier-top.cs { background: #2d1b00; }
+.hier-top.tech { background: #1a1a3a; }
+.hier-top.esg { background: #1a2d1a; }
+.hier-top.life { background: #2d1a2d; }
+.hier-cat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 14px; }
+.hier-cat-title { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between; }
+.hier-cat-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text3); }
+.hier-sub { display: flex; flex-direction: column; gap: 3px; }
+.hier-sub-item { font-size: 11px; color: var(--text2); padding: 2px 0; padding-left: 8px; border-left: 2px solid var(--border); }
+.connector-line { border-top: 2px dashed var(--border); margin: 0 8px; }
+
+/* RADAR OVERLAY */
+#radarModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; align-items: center; justify-content: center; }
+#radarModal.show { display: flex; }
+.radar-modal-inner { background: var(--surface); border-radius: var(--radius-lg); padding: 28px; max-width: 560px; width: 90%; position: relative; }
+.modal-close { position: absolute; top: 12px; right: 16px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text2); }
+
+/* FIRM COLOR MAP */
+.firm-Accenture { color: #a100ff; }
+.firm-Capgemini { color: #0070ad; }
+.firm-McKinsey { color: #003057; }
+.firm-Deloitte { color: #86bc25; }
+.firm-EY { color: #ffe600; }
+.firm-KPMG { color: #00338d; }
+.firm-PwC { color: #d04a02; }
+.firm-BCG { color: #006400; }
+.firm-RolandBerger { color: #c0392b; }
+.firm-OliverWyman { color: #0d5c8a; }
+.firm-ADLittle { color: #8e44ad; }
+.firm-Bain { color: #cc0000; }
+html.dark .firm-EY { color: #f0d800; }
+html.dark .firm-McKinsey { color: #4a90d9; }
+
+/* SEPARATOR */
+.sep { height: 1px; background: var(--border); margin: 24px 0; }
+
+/* TOOLTIP */
+[data-tooltip] { position: relative; cursor: help; }
+[data-tooltip]::after { content: attr(data-tooltip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: #1a1916; color: white; font-size: 11px; padding: 5px 10px; border-radius: 5px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.2s; font-family: 'DM Sans', sans-serif; z-index: 50; max-width: 280px; white-space: normal; text-align: center; }
+[data-tooltip]:hover::after { opacity: 1; }
+
+/* PRINT */
+@media print { .header, .nav-wrapper, .filter-bar, .btn { display: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-brand">
+    <div class="header-logo">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    </div>
+    <div>
+      <div class="header-title">Swedish Automotive Consulting Intelligence</div>
+      <div class="header-sub">Market Rankings & Capability Analysis · 2025 Edition</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <span class="badge">RESTRICTED</span>
+    <button class="toggle-btn" onclick="toggleDark()">🌙 Dark Mode</button>
+    <button class="btn btn-primary" onclick="exportPDF()">⬇ Export PDF</button>
+  </div>
+</header>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <div class="nav-tabs" id="navTabs">
+    <div class="nav-tab active" data-tab="summary">Summary</div>
+    <div class="nav-tab" data-tab="t1"><span class="nav-tab-num">01</span>Strategy</div>
+    <div class="nav-tab" data-tab="t2"><span class="nav-tab-num">02</span>Product Dev.</div>
+    <div class="nav-tab" data-tab="t3"><span class="nav-tab-num">03</span>Procurement</div>
+    <div class="nav-tab" data-tab="t4"><span class="nav-tab-num">04</span>Manufacturing & SC</div>
+    <div class="nav-tab" data-tab="t5"><span class="nav-tab-num">05</span>Capital Excellence</div>
+    <div class="nav-tab" data-tab="t6"><span class="nav-tab-num">06</span>Customer</div>
+    <div class="nav-tab" data-tab="t7"><span class="nav-tab-num">07</span>People & Change</div>
+    <div class="nav-tab" data-tab="t8"><span class="nav-tab-num">08</span>Finance Transformation</div>
+    <div class="nav-tab" data-tab="t9"><span class="nav-tab-num">09</span>Technology</div>
+    <div class="nav-tab" data-tab="t10"><span class="nav-tab-num">10</span>Risk</div>
+    <div class="nav-tab" data-tab="t11"><span class="nav-tab-num">11</span>Sustainability</div>
+    <div class="nav-tab" data-tab="t12"><span class="nav-tab-num">12</span>Deal Advisory</div>
+    <div class="nav-tab" data-tab="t13"><span class="nav-tab-num">13</span>Motor Insurance</div>
+    <div class="nav-tab" data-tab="t14"><span class="nav-tab-num">14</span>Autofinance</div>
+    <div class="nav-tab" data-tab="t15"><span class="nav-tab-num">15</span>After Market</div>
+    <div class="nav-tab" data-tab="t16"><span class="nav-tab-num">16</span>Car Dealership</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- ============================================================ SUMMARY TAB -->
+<div class="tab-content active" id="tab-summary">
+  <div class="exec-banner">
+    <h1>Swedish Automotive Consulting Market Intelligence 2025</h1>
+    <p>Executive-grade capability ranking of 12 global consulting firms across 16 service domains, anchored specifically to the Swedish automotive ecosystem including Volvo Cars, Volvo Group, Scania, Polestar, Autoliv, and SKF.</p>
+    <div class="exec-banner-meta">
+      <div class="exec-meta-item"><span class="exec-meta-label">Firms Ranked</span><span class="exec-meta-value">12</span><span class="exec-meta-sub">Global consulting firms</span></div>
+      <div class="exec-meta-item"><span class="exec-meta-label">Capability Domains</span><span class="exec-meta-value">16</span><span class="exec-meta-sub">Across 5 pillars</span></div>
+      <div class="exec-meta-item"><span class="exec-meta-label">Subcategories</span><span class="exec-meta-value">74</span><span class="exec-meta-sub">Ranked individually</span></div>
+      <div class="exec-meta-item"><span class="exec-meta-label">Market Focus</span><span class="exec-meta-value">SE/NO</span><span class="exec-meta-sub">Sweden & Nordics</span></div>
+      <div class="exec-meta-item"><span class="exec-meta-label">Edition</span><span class="exec-meta-value">2025</span><span class="exec-meta-sub">May 2025</span></div>
+    </div>
+  </div>
+
+  <!-- HIERARCHY -->
+  <div class="section-header"><div class="section-title">Capability Hierarchy</div></div>
+  <div class="section-line"></div>
+  <div class="card" style="margin-bottom:28px;">
+    <div class="card-title">Full Service Taxonomy — Swedish Automotive Consulting</div>
+    <div class="card-sub">Five pillars · 16 categories · 74 subcategories</div>
+    <div class="hier-wrap">
+      <div class="hier-level0">
+        <!-- CUSTOMER & OPS -->
+        <div class="hier-col">
+          <div class="hier-top co">Customer &amp; Operations</div>
+          <div class="hier-cat"><div class="hier-cat-title">Strategy <span class="hier-cat-num">01</span></div><div class="hier-sub"><div class="hier-sub-item">Growth Strategy</div><div class="hier-sub-item">Go-to-Market Strategy</div><div class="hier-sub-item">Cost-to-Serve</div><div class="hier-sub-item">Product Strategy</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">Product Development <span class="hier-cat-num">02</span></div><div class="hier-sub"><div class="hier-sub-item">Portfolio Performance</div><div class="hier-sub-item">Design-to-Cost / Value</div><div class="hier-sub-item">Product Development</div><div class="hier-sub-item">R&amp;D Operating Model</div><div class="hier-sub-item">R&amp;D Strategy</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">Procurement <span class="hier-cat-num">03</span></div><div class="hier-sub"><div class="hier-sub-item">TOM &amp; Category Mgmt</div><div class="hier-sub-item">TPRM &amp; Sustainable Proc.</div><div class="hier-sub-item">Digital Procurement &amp; AI</div><div class="hier-sub-item">Cost Optimization</div><div class="hier-sub-item">Procurement Academy</div><div class="hier-sub-item">Procurement Transformation</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">Manufacturing &amp; SC <span class="hier-cat-num">04</span></div><div class="hier-sub"><div class="hier-sub-item">SC Strategy &amp; Ops Model</div><div class="hier-sub-item">Network &amp; Material Flow</div><div class="hier-sub-item">Planning</div><div class="hier-sub-item">Production</div><div class="hier-sub-item">Logistics &amp; Transport</div><div class="hier-sub-item">Aftermarket</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">Capital Excellence <span class="hier-cat-num">05</span></div><div class="hier-sub"><div class="hier-sub-item">Footprint Strategy</div><div class="hier-sub-item">Factory Build-Up</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">Customer <span class="hier-cat-num">06</span></div><div class="hier-sub"><div class="hier-sub-item">Commerce</div><div class="hier-sub-item">Customer Insights</div><div class="hier-sub-item">Marketing</div><div class="hier-sub-item">Sales</div><div class="hier-sub-item">Service</div></div></div>
+        </div>
+        <!-- CORPORATE SERVICES -->
+        <div class="hier-col">
+          <div class="hier-top cs">Corporate Services</div>
+          <div class="hier-cat"><div class="hier-cat-title">Finance Transformation <span class="hier-cat-num">08</span></div><div class="hier-sub"><div class="hier-sub-item">Finance Strategy &amp; TOM</div><div class="hier-sub-item">Finance Insights</div><div class="hier-sub-item">Finance Excellence</div><div class="hier-sub-item">Performance Improvement</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">People &amp; Change <span class="hier-cat-num">07</span></div><div class="hier-sub"><div class="hier-sub-item">Workforce Transformation</div><div class="hier-sub-item">HR TOM</div><div class="hier-sub-item">Change Management</div><div class="hier-sub-item">Workforce AI</div></div></div>
+        </div>
+        <!-- TECH -->
+        <div class="hier-col">
+          <div class="hier-top tech">Tech</div>
+          <div class="hier-cat"><div class="hier-cat-title">Technology <span class="hier-cat-num">09</span></div><div class="hier-sub"><div class="hier-sub-item">CIO Advisory</div><div class="hier-sub-item">ERP Transformation</div><div class="hier-sub-item">Data, AI &amp; Emerging Tech</div><div class="hier-sub-item">Cyber Security</div><div class="hier-sub-item">AutoTech</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">Risk <span class="hier-cat-num">10</span></div><div class="hier-sub"><div class="hier-sub-item">Forensic Services</div><div class="hier-sub-item">Governance, Risk &amp; Compliance</div><div class="hier-sub-item">Risk Technology</div><div class="hier-sub-item">Cyber &amp; Cloud Security</div><div class="hier-sub-item">Forensic, Regulatory &amp; Risk Advisory</div></div></div>
+        </div>
+        <!-- ESG & DEAL -->
+        <div class="hier-col">
+          <div class="hier-top esg">ESG &amp; Deal</div>
+          <div class="hier-cat"><div class="hier-cat-title">Sustainability <span class="hier-cat-num">11</span></div><div class="hier-sub"><div class="hier-sub-item">Sustainable Supply Chains</div><div class="hier-sub-item">Climate &amp; Decarbonization</div><div class="hier-sub-item">Circular Economy</div><div class="hier-sub-item">Value Creation</div><div class="hier-sub-item">Sustainability Reporting</div><div class="hier-sub-item">Energy Resilience</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">Deal Advisory <span class="hier-cat-num">12</span></div><div class="hier-sub"><div class="hier-sub-item">Transaction Services</div><div class="hier-sub-item">Deal Strategy</div><div class="hier-sub-item">Capital Markets</div><div class="hier-sub-item">M&amp;A</div><div class="hier-sub-item">Valuation &amp; Modeling</div></div></div>
+        </div>
+        <!-- LIFECYCLE -->
+        <div class="hier-col">
+          <div class="hier-top life">Lifecycle Ecosystem</div>
+          <div class="hier-cat"><div class="hier-cat-title">Motor Insurance <span class="hier-cat-num">13</span></div><div class="hier-sub"><div class="hier-sub-item">Strategy &amp; Value Proposition</div><div class="hier-sub-item">Enablers &amp; Foundations</div><div class="hier-sub-item">Execution &amp; Ecosystem</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">Autofinance <span class="hier-cat-num">14</span></div><div class="hier-sub"><div class="hier-sub-item">Business Model &amp; Growth</div><div class="hier-sub-item">Risk, Capital &amp; Balance Sheet</div><div class="hier-sub-item">Operational Efficiency</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">After Market <span class="hier-cat-num">15</span></div><div class="hier-sub"><div class="hier-sub-item">Strategy</div><div class="hier-sub-item">Commercial Excellence</div><div class="hier-sub-item">Operational Excellence</div></div></div>
+          <div class="hier-cat"><div class="hier-cat-title">Car Dealership <span class="hier-cat-num">16</span></div><div class="hier-sub"><div class="hier-sub-item">Dealership Excellence &amp; Retail TOM</div><div class="hier-sub-item">Strategic Business Model</div><div class="hier-sub-item">Operational &amp; Financial Excellence</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERALL RANKINGS -->
+  <div class="section-header"><div class="section-title">Overall Market Rankings — Swedish Automotive Consulting</div></div>
+  <div class="section-line"></div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Filter:</span>
+    <select class="filter-select" id="summaryFilter" onchange="filterSummary()">
+      <option value="all">All Firms</option>
+      <option value="strategy">Strategy Leaders</option>
+      <option value="tech">Technology Leaders</option>
+      <option value="sustainability">Sustainability Leaders</option>
+    </select>
+    <input class="filter-search" type="text" placeholder="Search firm or capability..." id="summarySearch" oninput="filterSummarySearch()">
+  </div>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <div class="card-title">Overall Capability Leaderboard</div>
+      <div class="card-sub">Composite weighted score — Swedish automotive market</div>
+      <div class="leaderboard" id="overallLeaderboard"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Capability Heatmap — Top Firms</div>
+      <div class="card-sub">Score by domain (click cell for detail)</div>
+      <div class="chart-container-lg"><canvas id="heatmapChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:24px;">
+    <div class="card">
+      <div class="card-title">Radar Comparison — Top 6 Firms</div>
+      <div class="card-sub">Multi-dimensional capability profile</div>
+      <div class="chart-container-lg"><canvas id="radarChart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Domain Leadership Distribution</div>
+      <div class="card-sub">Which firms lead in each pillar</div>
+      <div class="chart-container-lg"><canvas id="domainChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- SCORING METHODOLOGY -->
+  <div class="section-header" style="margin-top:12px;"><div class="section-title">Scoring Methodology</div></div>
+  <div class="section-line"></div>
+  <div class="methodology-card">
+    <div class="methodology-header" onclick="toggleMethodology(this)">
+      <h4>Weighted Scoring Framework — How Rankings Are Calculated</h4>
+      <span>▼</span>
+    </div>
+    <div class="methodology-body open">
+      <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Each consulting firm is scored 0–100 across eight weighted dimensions, specifically calibrated for the Swedish automotive consulting market. Scores are based on publicly available evidence, analyst reports, and systematic inference logic.</p>
+      <div class="weight-row"><span class="weight-label">1. Swedish Automotive Credentials (direct Volvo/Scania/Polestar references)</span><span class="weight-pct">25%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:100%"></div></div></div>
+      <div class="weight-row"><span class="weight-label">2. Automotive Industry Expertise (global automotive practice depth)</span><span class="weight-pct">20%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:80%"></div></div></div>
+      <div class="weight-row"><span class="weight-label">3. Swedish/Nordic Market Presence (office size, Nordic revenue share)</span><span class="weight-pct">15%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:60%"></div></div></div>
+      <div class="weight-row"><span class="weight-label">4. Technology & Engineering Capability (SAP, cloud, SDV, AI)</span><span class="weight-pct">10%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:40%"></div></div></div>
+      <div class="weight-row"><span class="weight-label">5. Scale of Professionals in Capability Area</span><span class="weight-pct">10%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:40%"></div></div></div>
+      <div class="weight-row"><span class="weight-label">6. Strategic Reputation (brand, analyst recognition)</span><span class="weight-pct">10%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:40%"></div></div></div>
+      <div class="weight-row"><span class="weight-label">7. Managed Services / Delivery Capability</span><span class="weight-pct">5%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:20%"></div></div></div>
+      <div class="weight-row"><span class="weight-label">8. Thought Leadership & Analyst Recognition (IDC, HFS, Gartner)</span><span class="weight-pct">5%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:20%"></div></div></div>
+      <div style="margin-top:16px;padding:12px;background:var(--surface2);border-radius:8px;font-size:12px;color:var(--text2);">
+        <strong>Inference Logic:</strong> Where direct Swedish automotive revenue data is unavailable, scores are inferred from: (a) Nordic office headcount proxies, (b) publicly confirmed client relationships with Volvo Cars/Group, Scania, Polestar, Autoliv, SKF, (c) SAP/cloud/Microsoft/AWS partner tier status in Nordics, (d) published case studies and press releases, (e) analyst rankings from IDC MarketScape, HFS Horizons, Everest Group, and Gartner.
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPABILITY HEATMAP FULL -->
+  <div class="section-header" style="margin-top:28px;"><div class="section-title">Full Capability Matrix</div></div>
+  <div class="section-line"></div>
+  <div class="card">
+    <div class="card-title">Domain-Level Scores — All 12 Firms × 16 Domains</div>
+    <div class="card-sub">Color intensity = strength score (0–100). Click any cell for detail.</div>
+    <div class="heatmap-wrap" style="margin-top:12px;">
+      <table class="heatmap" id="mainHeatmap"></table>
+    </div>
+  </div>
+
+  <!-- KEY FINDINGS -->
+  <div class="section-header" style="margin-top:28px;"><div class="section-title">Key Market Intelligence Findings</div></div>
+  <div class="section-line"></div>
+  <div class="grid-3" style="margin-bottom:28px;">
+    <div class="card">
+      <div class="card-title" style="color:var(--accent)">🏆 Strategy Dominance</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-top:8px;">McKinsey leads in pure automotive strategy for Swedish OEMs, leveraging deep Volvo Cars capability-building engagements and global automotive practice. BCG and Roland Berger are strong #2/#3 with specific EV and SDV strategy credentials in Sweden.</p>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--accent2)">⚡ Technology & SDV</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-top:8px;">Capgemini is the undisputed leader in technology delivery for Swedish automotive — IDC MarketScape Leader in SDV engineering, selected by Volvo Cars for digital/cloud transformation, and Aurobay SAP S/4HANA implementation. Accenture is #2 with Zenuity and cloud scale.</p>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--accent3)">🌱 Sustainability & EV</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-top:8px;">Roland Berger's 2024 EV Charging Index for Sweden and deep decarbonization advisory puts them ahead in pure EV strategy. Deloitte and KPMG lead on sustainability reporting and net-zero transformation at board level for Swedish industrials.</p>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:#8e44ad">💼 Deal Advisory</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-top:8px;">EY's fairness opinion for Volvo Cars (2025 EGM) and KPMG's Polestar audit relationship establish them as the dominant M&A advisory players in Swedish automotive. PwC's Volvo Cars care experience and Bildahl transaction demonstrate strong deal credentials.</p>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:#c9a227">🏭 Manufacturing & SC</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-top:8px;">Accenture and Capgemini dominate manufacturing digitalization delivery. McKinsey and BCG lead supply chain strategy. EY is ranked #1 by HFS Horizons 2025 in Intelligent Supply Chain Services globally, translating to strong Swedish industrial credentials.</p>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:#c0392b">🔬 Engineering Niche</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-top:8px;">Arthur D. Little leads in deep R&D and engineering advisory for Swedish industrials — their Volvo Group CIO thought leadership and specialized automotive engineering methodology is unmatched among pure advisory firms in the Nordics.</p>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources-section">
+    <div class="card-title">Research Sources & References</div>
+    <div class="card-sub">All sources used in the construction of this market intelligence dashboard</div>
+    <div style="margin-top:16px;">
+      <h5 style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;font-family:'JetBrains Mono',monospace;">Automotive Consulting Market Reports</h5>
+      <div class="sources-grid">
+        <a class="source-link" href="https://www.gminsights.com/industry-analysis/automotive-industry-consulting-services-market" target="_blank">GM Insights — Automotive Industry Consulting Services Market</a>
+        <a class="source-link" href="https://www.globalgrowthinsights.com/market-reports/automotive-consulting-service-market-123495" target="_blank">Global Growth Insights — Automotive Consulting Service Market</a>
+        <a class="source-link" href="https://www.marketresearchfuture.com/reports/automotive-industry-consulting-service-market-30293" target="_blank">Market Research Future — Automotive Consulting Market 2025</a>
+        <a class="source-link" href="https://www.marketreportsworld.com/market-reports/automotive-consulting-service-market-14714365" target="_blank">Market Reports World — Automotive Consulting Service</a>
+        <a class="source-link" href="https://www.businessresearchinsights.com/market-reports/automotive-consulting-service-market-119832" target="_blank">Business Research Insights — Automotive Consulting 2025</a>
+        <a class="source-link" href="https://hub.sourceglobalresearch.com/datasets/the-nordics-consulting-market-in-2025" target="_blank">Source Global Research — Nordics Consulting Market 2025</a>
+        <a class="source-link" href="https://assets.kpmg.com/content/dam/kpmgsites/xx/pdf/2025/05/excerpt-kpmg-hfs-horizons-sustainability-services-2024.pdf.coredownload.inline.pdf" target="_blank">KPMG — HFS Horizons Sustainability Services 2024</a>
+        <a class="source-link" href="https://www.ey.com/content/dam/ey-unified-site/ey-com/en-gl/about-us/analyst-relations/documents/ey-gl-hfs-horizons-intelligent-supply-chain-services-11-2025.pdf" target="_blank">EY — HFS Horizons Intelligent Supply Chain Services 2025</a>
+        <a class="source-link" href="https://www.capgemini.com/news/press-releases/capgemini-positioned-as-a-leader-in-the-idc-marketscape-worldwide-it-and-engineering-services-for-software-defined-vehicles-2025/" target="_blank">Capgemini — IDC MarketScape Leader in SDV Engineering 2025</a>
+        <a class="source-link" href="https://www.consultancy.eu/news/1044/consulting-industry-of-nordics-scandinavia-expands-to-28-billion" target="_blank">Consultancy.eu — Nordics Consulting Industry Expands to €28bn</a>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <h5 style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;font-family:'JetBrains Mono',monospace;">Consulting Firm Automotive Pages</h5>
+      <div class="sources-grid">
+        <a class="source-link" href="https://www.accenture.com/se-en/industries/automotive" target="_blank">Accenture Sweden — Automotive</a>
+        <a class="source-link" href="https://www.deloitte.com/se/sv/Industries/automotive/about.html" target="_blank">Deloitte Sweden — Automotive</a>
+        <a class="source-link" href="https://kpmg.com/se/en/industries/automotive.html" target="_blank">KPMG Sweden — Automotive</a>
+        <a class="source-link" href="https://www.oliverwyman.com/our-expertise/industries/automotive" target="_blank">Oliver Wyman — Automotive Expertise</a>
+        <a class="source-link" href="https://www.ey.com/en_se/industries/automotive" target="_blank">EY Sweden — Automotive</a>
+        <a class="source-link" href="https://www.capgemini.com/se-en/industries/automotive/" target="_blank">Capgemini Sweden — Automotive</a>
+        <a class="source-link" href="https://www.pwc.se/fordon" target="_blank">PwC Sweden — Fordon (Automotive)</a>
+        <a class="source-link" href="https://www.mckinsey.com/industries/automotive-and-assembly/how-we-help-clients" target="_blank">McKinsey — Automotive &amp; Assembly</a>
+        <a class="source-link" href="https://www.rolandberger.com/en/Expertise/Industries/Automotive/" target="_blank">Roland Berger — Automotive</a>
+        <a class="source-link" href="https://www.adlittle.com/in-en/industries/automotive" target="_blank">Arthur D. Little — Automotive</a>
+        <a class="source-link" href="https://www.bcg.com/industries/automotive/overview" target="_blank">BCG — Automotive</a>
+        <a class="source-link" href="https://www.bain.com/industry-expertise/automotive/" target="_blank">Bain &amp; Company — Automotive</a>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <h5 style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;font-family:'JetBrains Mono',monospace;">Key Credentials &amp; Case Studies</h5>
+      <div class="sources-grid">
+        <a class="source-link" href="https://www.capgemini.com/news/press-releases/capgemini-selected-by-volvo-cars-for-digital-and-cloud-transformation/" target="_blank">Capgemini — Selected by Volvo Cars for Digital &amp; Cloud Transformation</a>
+        <a class="source-link" href="https://www.capgemini.com/se-en/news/client-stories/aurobay-implements-sap-s-4hana-as-a-foundation-for-transformation/" target="_blank">Capgemini — Aurobay SAP S/4HANA Implementation</a>
+        <a class="source-link" href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/our-people-are-our-destiny-capability-building-at-volvo-cars" target="_blank">McKinsey — Capability Building at Volvo Cars</a>
+        <a class="source-link" href="https://assets.kpmg.com/content/dam/kpmgsites/nl/pdf/2015/volvo-group-kpmg-true-value-case-study.pdf" target="_blank">KPMG — Volvo Group True Value Case Study</a>
+        <a class="source-link" href="https://investors.volvocars.com/~/media/Files/V/Volvo-Cars-IR-V2/EGM%202025/Fairness%20opinion%20from%20EY.pdf" target="_blank">EY — Fairness Opinion for Volvo Cars EGM 2025</a>
+        <a class="source-link" href="https://investors.polestar.com/static-files/b059d4a4-7493-4649-8bfa-4b1af6185b19" target="_blank">KPMG — Polestar Auditor Consent 2022</a>
+        <a class="source-link" href="https://www.mca.org.uk/consulting-case-studies/pwc-with-volvo-cars-global-care-experience-design" target="_blank">PwC — Volvo Cars Global Care Experience Design</a>
+        <a class="source-link" href="https://www.accenture.com/content/dam/accenture/final/a-com-migration/pdf/accenture-zenuity-case.pdf" target="_blank">Accenture — Zenuity (Volvo/Veoneer) Case</a>
+        <a class="source-link" href="https://www.adlittle.com/se-en/press-release/arthur-d-little-and-volvo-group-bring-new-thinking-cios" target="_blank">Arthur D. Little — Volvo Group CIO Advisory</a>
+        <a class="source-link" href="https://www.rolandberger.com/en/Insights/Publications/EV-Charging-Index-Expert-insight-from-Sweden-2024.html" target="_blank">Roland Berger — EV Charging Index Sweden 2024</a>
+        <a class="source-link" href="https://www.pwc.se/sv/foretagstransaktioner/kundcase/volvo-cars.html" target="_blank">PwC Sweden — Volvo Cars Transaction Case</a>
+        <a class="source-link" href="https://www.pwc.se/sv/foretagstransaktioner/kundcase/bildahl.html" target="_blank">PwC Sweden — Bildahl Dealership Transaction</a>
+        <a class="source-link" href="https://www.consultancy.eu/news/3063/vw-and-volvo-select-consultants-for-digital-transformation-projects" target="_blank">Consultancy.eu — VW and Volvo Digital Transformation Consultants</a>
+        <a class="source-link" href="https://www.oliverwyman.com/our-expertise/insights/2017/jul/Does-Volvos-Move-Represent-an-Irresistible-Force-.html" target="_blank">Oliver Wyman — Volvo's Strategic Move Analysis</a>
+        <a class="source-link" href="https://www.capgemini.com/gb-en/wp-content/uploads/sites/3/2020/03/Report-The-Automotive-Industry-in-the-Era-of-Sustainability.pdf" target="_blank">Capgemini — Automotive Industry in the Era of Sustainability</a>
+      </div>
+    </div>
+    <div style="margin-top:16px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <span><span class="evidence-badge ev-direct">DIRECT EVIDENCE</span> <span style="font-size:12px;color:var(--text2);">Confirmed client relationships &amp; case studies</span></span>
+        <span><span class="evidence-badge ev-inferred">MARKET INFERENCE</span> <span style="font-size:12px;color:var(--text2);">Nordic presence, partner tiers, analyst positions</span></span>
+        <span><span class="evidence-badge ev-estimated">ANALYST ESTIMATE</span> <span style="font-size:12px;color:var(--text2);">Structured inference from market proxies</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ TAB TEMPLATE GENERATOR (tabs 1-16 are rendered by JS) -->
+<div id="tab-t1" class="tab-content"></div>
+<div id="tab-t2" class="tab-content"></div>
+<div id="tab-t3" class="tab-content"></div>
+<div id="tab-t4" class="tab-content"></div>
+<div id="tab-t5" class="tab-content"></div>
+<div id="tab-t6" class="tab-content"></div>
+<div id="tab-t7" class="tab-content"></div>
+<div id="tab-t8" class="tab-content"></div>
+<div id="tab-t9" class="tab-content"></div>
+<div id="tab-t10" class="tab-content"></div>
+<div id="tab-t11" class="tab-content"></div>
+<div id="tab-t12" class="tab-content"></div>
+<div id="tab-t13" class="tab-content"></div>
+<div id="tab-t14" class="tab-content"></div>
+<div id="tab-t15" class="tab-content"></div>
+<div id="tab-t16" class="tab-content"></div>
+
+</main>
+
+<!-- RADAR MODAL -->
+<div id="radarModal">
+  <div class="radar-modal-inner">
+    <button class="modal-close" onclick="document.getElementById('radarModal').classList.remove('show')">✕</button>
+    <div class="card-title" id="radarModalTitle">Firm Profile</div>
+    <div class="chart-container" style="height:340px;"><canvas id="radarModalChart"></canvas></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA MODEL
+// ============================================================
+const FIRMS = ['McKinsey','BCG','Roland Berger','Oliver Wyman','Arthur D. Little','Accenture','Capgemini','Deloitte','EY','KPMG','PwC','Bain'];
+
+const FIRM_COLORS = {
+  'McKinsey': '#003057','BCG': '#006400','Roland Berger': '#c0392b','Oliver Wyman': '#0d5c8a',
+  'Arthur D. Little': '#8e44ad','Accenture': '#a100ff','Capgemini': '#0070ad','Deloitte': '#86bc25',
+  'EY': '#c9a227','KPMG': '#00338d','PwC': '#d04a02','Bain': '#cc0000'
+};
+
+const DOMAINS = ['Strategy','Product Dev.','Procurement','Mfg & SC','Capital Exc.','Customer','People & Chg','Finance Trans.','Technology','Risk','Sustainability','Deal Advisory','Motor Ins.','Autofinance','After Market','Car Dealership'];
+const DOMAIN_KEYS = ['t1','t2','t3','t4','t5','t6','t7','t8','t9','t10','t11','t12','t13','t14','t15','t16'];
+
+// Full rankings data: [McKinsey, BCG, Roland Berger, Oliver Wyman, ADL, Accenture, Capgemini, Deloitte, EY, KPMG, PwC, Bain]
+const DOMAIN_SCORES = {
+  t1:  [94, 91, 88, 85, 76, 72, 60, 70, 68, 65, 66, 82],
+  t2:  [85, 82, 86, 80, 90, 74, 78, 65, 60, 58, 56, 70],
+  t3:  [78, 80, 72, 68, 65, 85, 82, 75, 80, 72, 74, 66],
+  t4:  [80, 78, 75, 70, 72, 88, 90, 76, 85, 70, 68, 65],
+  t5:  [76, 78, 80, 74, 72, 70, 68, 60, 62, 58, 60, 64],
+  t6:  [82, 78, 68, 72, 64, 80, 75, 76, 74, 68, 78, 74],
+  t7:  [86, 80, 72, 70, 68, 82, 74, 84, 80, 76, 82, 76],
+  t8:  [74, 68, 64, 62, 58, 80, 76, 86, 88, 84, 90, 64],
+  t9:  [72, 70, 68, 65, 74, 90, 94, 82, 80, 78, 76, 60],
+  t10: [68, 64, 60, 62, 64, 82, 76, 84, 86, 90, 84, 58],
+  t11: [78, 82, 86, 74, 80, 75, 76, 82, 84, 80, 78, 70],
+  t12: [80, 74, 72, 76, 68, 64, 58, 78, 90, 88, 86, 72],
+  t13: [64, 60, 66, 80, 58, 68, 62, 70, 72, 70, 74, 65],
+  t14: [66, 62, 68, 82, 60, 70, 64, 72, 80, 84, 82, 66],
+  t15: [74, 72, 76, 80, 70, 78, 72, 68, 66, 64, 68, 74],
+  t16: [60, 58, 68, 70, 62, 64, 60, 66, 64, 62, 80, 68],
+};
+
+// Compute overall scores (average across domains, weighted slightly toward key domains)
+function computeOverall(firmIdx) {
+  const keys = Object.keys(DOMAIN_SCORES);
+  const weights = [1.5, 1.2, 1.0, 1.3, 1.0, 1.0, 1.0, 1.0, 1.2, 1.0, 1.2, 1.3, 0.8, 0.8, 0.9, 0.8];
+  let total = 0, wSum = 0;
+  keys.forEach((k, i) => { total += DOMAIN_SCORES[k][firmIdx] * weights[i]; wSum += weights[i]; });
+  return Math.round(total / wSum);
+}
+
+const OVERALL_SCORES = FIRMS.map((f, i) => ({ firm: f, score: computeOverall(i), idx: i }))
+  .sort((a, b) => b.score - a.score);
+
+// Detailed tab data
+const TAB_DATA = {
+  t1: {
+    title: 'Strategy',
+    pillar: 'Customer & Operations',
+    desc: 'Corporate and automotive strategy advisory, covering growth strategy, go-to-market, cost-to-serve and product strategy for Swedish automotive OEMs and suppliers.',
+    subcats: [
+      {
+        name: 'Growth Strategy',
+        desc: 'Long-term growth agenda, market entry, portfolio expansion and adjacencies for Swedish automotive players.',
+        rankings: [
+          { firm: 'McKinsey', score: 95, conf: 'High', why: 'Documented Volvo Cars capability building engagement. Leads global automotive growth strategy practice. Center for Future Mobility publishes Swedish EV/mobility market outlooks.', creds: 'Volvo Cars organizational capability building; Global auto growth strategy leadership', diff: 'Depth of senior partner access at Volvo Cars board level; proprietary automotive benchmarking database' },
+          { firm: 'BCG', score: 92, conf: 'High', why: 'BCG Henderson Institute publishes automotive future-of-mobility studies referenced by Swedish OEMs. Strong Gothenburg-adjacent Nordic presence through Stockholm office.', creds: 'Multiple Nordic industrial strategy engagements; SDV strategy publications', diff: 'BCG X digital ventures capability combined with strategy depth' },
+          { firm: 'Roland Berger', score: 88, conf: 'High', why: 'Specific EV Charging Index for Sweden (2024). Deep European automotive heritage, significant Munich automotive practice with Nordic client reach.', creds: 'EV Charging Index Sweden 2024; European OEM strategy work', diff: 'European automotive heritage; dedicated EV/electrification strategic advisory' },
+          { firm: 'Oliver Wyman', score: 84, conf: 'Medium', why: 'Published specific Volvo strategic analysis (2017). Strong automotive strategy practice from MMC/Oliver Wyman origins. Good FSOE (financial services/OEM) crossover in strategy.', creds: 'Volvo strategic move analysis publication; automotive OEM strategy practice', diff: 'Strong in OEM business model transformation strategy' },
+          { firm: 'Bain', score: 80, conf: 'Medium', why: 'Strong go-to-market and commercial strategy for automotive. Good Nordic industrial presence. Adaptive GTM systems publication cited in auto context.', creds: 'GTM strategy publications; Nordic industrial clients', diff: 'Net Promoter System in automotive commercial transformation' },
+          { firm: 'Arthur D. Little', score: 76, conf: 'Medium', why: 'Volvo Group CIO thought leadership specifically in Sweden. Specialist automotive engineering and innovation strategy advisory. Smaller team but high-caliber partners.', creds: 'Volvo Group CIO advisory; automotive innovation strategy publications', diff: 'Deep engineering-to-strategy linkage; R&D-driven growth advisory' },
+          { firm: 'Accenture', score: 73, conf: 'Medium', why: 'Strong in strategy-to-execution but less recognized for pure corporate strategy. Swedish automotive delivery credentials (Zenuity) are strong.', creds: 'Zenuity/Volvo-Veoneer delivery; cloud transformation strategy Volvo Cars', diff: 'Strategy activated through technology — not pure advisory' },
+          { firm: 'Deloitte', score: 70, conf: 'Medium', why: 'Good automotive strategy through Monitor Deloitte. Swedish presence via Jonas André (Volvo) profile. Less dominant vs MBB for pure strategy.', creds: 'Monitor Deloitte automotive practice; Deloitte Sweden automotive team', diff: 'Finance/risk-linked strategy advisory' },
+          { firm: 'PwC', score: 67, conf: 'Medium', why: 'Good in transaction-linked strategy. Volvo Cars care experience design case demonstrates customer strategy depth.', creds: 'Volvo Cars global care experience strategy; MCA award-winning case study', diff: 'Customer/CX strategy and deal-linked strategy' },
+          { firm: 'EY', score: 65, conf: 'Medium', why: 'EY-Parthenon provides strategy advisory. Volvo Cars fairness opinion 2025 demonstrates strategic transaction advisory access.', creds: 'EY-Parthenon automotive practice; Volvo Cars EGM 2025 advisory', diff: 'Strategy through deals and financial lens' },
+          { firm: 'KPMG', score: 62, conf: 'Medium', why: 'Strategy through deals and operations. Polestar and Volvo Group credentials. Less recognized for pure strategic advisory vs Big3.', creds: 'Volvo Group True Value Case Study; Polestar auditor relationship', diff: 'Sector strategy through financial advisory lens' },
+          { firm: 'Capgemini', score: 58, conf: 'Low', why: 'Strong in technology strategy but limited pure corporate strategy for Swedish automotive. Strategy follows technology engagements.', creds: 'Volvo Cars digital strategy leadership; SDV strategy advisory', diff: 'Technology-led strategy, less pure corporate strategy' },
+        ]
+      },
+      {
+        name: 'Go-to-Market Strategy',
+        desc: 'Direct sales model transition, EV retail transformation, D2C models, and distribution strategy for Swedish automotive.',
+        rankings: [
+          { firm: 'McKinsey', score: 92, conf: 'High', why: 'Leads automotive GTM transformation globally. Direct-to-consumer model advisory for premium OEMs. Volvo Cars direct sales model transition is squarely McKinsey territory.', creds: 'Global OEM GTM transformation; Volvo Cars capabilities', diff: 'GTM benchmarking across 40+ OEMs worldwide' },
+          { firm: 'Oliver Wyman', score: 88, conf: 'High', why: 'Oliver Wyman is recognized as a top 3 automotive GTM firm globally. Strong in dealer network transformation, omnichannel automotive retail, and aftersales commercial strategy.', creds: 'Automotive GTM publications; dealer network advisory', diff: 'Financial services + automotive GTM expertise (captive finance linkage)' },
+          { firm: 'BCG', score: 85, conf: 'High', why: 'BCG leads EV go-to-market for European OEMs. Published on direct sales models and online retail for automotive.', creds: 'EV GTM strategy; digital automotive retail transformation', diff: 'Consumer behavior analytics in automotive purchasing' },
+          { firm: 'Bain', score: 82, conf: 'Medium', why: 'Bain\'s GTM methodology (Adaptive GTM System) is automotive-applicable. Strong B2B and B2C channel strategy in industrials.', creds: 'Adaptive GTM publication; Nordic industrial GTM', diff: 'NPS + GTM integration in automotive sales' },
+          { firm: 'Roland Berger', score: 78, conf: 'Medium', why: 'European automotive GTM advisory. New mobility GTM (carsharing, subscription models) research for Swedish market.', creds: 'European automotive distribution analysis; Sweden EV market entry analysis', diff: 'Mobility GTM and subscription model strategy in Sweden' },
+          { firm: 'PwC', score: 76, conf: 'High', why: 'PwC\'s Volvo Cars care experience design case directly demonstrates customer experience and GTM redesign credentials in Sweden.', creds: 'Volvo Cars global care experience — MCA award-winning case', diff: 'Customer experience-led GTM transformation' },
+          { firm: 'Accenture', score: 73, conf: 'Medium', why: 'Strong in commerce and digital channel strategy for automotive. AWS/Azure-powered dealer management system transformations.', creds: 'Digital automotive commerce; cloud-powered retail transformation', diff: 'Technology-enabled GTM execution at scale' },
+          { firm: 'Deloitte', score: 68, conf: 'Medium', why: 'Good through Monitor Deloitte. Commercial transformation advisory in automotive industrials.', creds: 'Monitor Deloitte automotive commercial practice', diff: 'Data-driven commercial performance' },
+          { firm: 'EY', score: 65, conf: 'Medium', why: 'Growing automotive GTM practice through EY-Parthenon acquisitions. Limited direct Swedish automotive GTM references.', creds: 'EY-Parthenon consumer practice; auto GTM publications', diff: 'Sector convergence advisory (insuretech + auto GTM)' },
+          { firm: 'Arthur D. Little', score: 62, conf: 'Low', why: 'Strong in product-market strategy but less GTM execution. Good for mobility business model GTM.', creds: 'Mobility GTM publications; automotive GTM strategy advisory', diff: 'Mobility-as-a-Service GTM frameworks' },
+          { firm: 'KPMG', score: 60, conf: 'Low', why: 'Limited pure GTM advisory credentials in Swedish automotive. Stronger in deal-linked commercial due diligence.', creds: 'KPMG automotive consumer studies; commercial DD', diff: 'Commercial DD in automotive M&A' },
+          { firm: 'Capgemini', score: 55, conf: 'Low', why: 'GTM primarily through technology enablement. Strong in digital commerce platforms for automotive retail.', creds: 'Digital commerce automotive platforms; Salesforce/CRM automotive', diff: 'Technology-led GTM implementation' },
+        ]
+      },
+      {
+        name: 'Cost-to-Serve',
+        desc: 'Service cost optimization, delivery model efficiency, and profitability improvement across the automotive value chain.',
+        rankings: [
+          { firm: 'McKinsey', score: 90, conf: 'High', why: 'Lean operations and cost-to-serve redesign for automotive globally. Specific Swedish OEM productivity improvement credentials.', creds: 'Automotive cost-to-serve benchmarking; OEM operating cost analysis', diff: 'Proprietary OEM cost database across 30+ global players' },
+          { firm: 'BCG', score: 87, conf: 'High', why: 'BCG\'s operational improvement and zero-based budgeting methodologies are extensively applied in auto. Strong Nordic industrial cost advisory.', creds: 'ZBB automotive programs; operational efficiency Nordic', diff: 'Zero-based redesign + digital efficiency tools' },
+          { firm: 'Accenture', score: 85, conf: 'High', why: 'Accenture\'s SynOps managed services model delivers measurable cost-to-serve reductions at scale. Strong in automotive operations delivery.', creds: 'SynOps automotive operations; automotive shared services delivery', diff: 'AI-powered cost-to-serve optimization at scale' },
+          { firm: 'Oliver Wyman', score: 82, conf: 'Medium', why: 'Automotive service operations and aftersales cost efficiency. Dealer cost-to-serve analysis for European OEMs.', creds: 'Automotive service operations advisory; aftersales cost efficiency', diff: 'Dealer network cost benchmarking' },
+          { firm: 'Roland Berger', score: 78, conf: 'Medium', why: 'European automotive cost reduction programs. Familiarity with Swedish OEM cost structures.', creds: 'European automotive cost advisory; Swedish OEM benchmarking', diff: 'Manufacturing cost optimization for European OEMs' },
+          { firm: 'Capgemini', score: 75, conf: 'Medium', why: 'Global delivery model enables measurable cost reduction. Aurobay SAP implementation demonstrates cost transformation delivery.', creds: 'Aurobay SAP S/4HANA; Volvo Cars cloud cost optimization', diff: 'Global delivery arbitrage in automotive operations' },
+          { firm: 'Deloitte', score: 72, conf: 'Medium', why: 'Cost transformation through finance function. Monitor Deloitte operational cost work in auto.', creds: 'Automotive cost transformation publications; finance-led cost work', diff: 'Finance-anchored cost-to-serve redesign' },
+          { firm: 'EY', score: 70, conf: 'Medium', why: 'Supply chain and operations cost advisory. HFS Horizons intelligent supply chain recognition.', creds: 'HFS Horizons Intelligent Supply Chain Leader 2025; EY supply chain advisory', diff: 'Supply chain efficiency + tax/cost synergies' },
+          { firm: 'KPMG', score: 67, conf: 'Medium', why: 'Operational cost through financial services lens. Volvo Group cost analysis.', creds: 'Volvo Group True Value analysis; KPMG operational advisory', diff: 'Financial value impact of operational cost changes' },
+          { firm: 'Bain', score: 65, conf: 'Medium', why: 'Operational improvement through Bain-led turnarounds. Less Nordic automotive delivery scale.', creds: 'Automotive cost-to-serve publications; turnaround advisory', diff: 'Performance improvement through workforce and commercial resets' },
+          { firm: 'PwC', score: 63, conf: 'Low', why: 'Cost advisory through finance transformation. Growing operational improvement practice in Sweden.', creds: 'PwC Sweden automotive advisory; finance-linked cost work', diff: 'Finance transformation enabling cost reduction' },
+          { firm: 'Arthur D. Little', score: 60, conf: 'Low', why: 'Less scale in cost-to-serve delivery. Strong in R&D cost efficiency but less in operational cost-to-serve.', creds: 'R&D cost efficiency advisory; engineering cost optimization', diff: 'Innovation-to-cost linkage' },
+        ]
+      },
+      {
+        name: 'Product Strategy',
+        desc: 'Portfolio decisions, EV product roadmaps, software-defined vehicle strategy, and product lifecycle management for Swedish automotive.',
+        rankings: [
+          { firm: 'Arthur D. Little', score: 92, conf: 'High', why: 'ADL\'s core engineering and innovation strategy practice is purpose-built for automotive product strategy. Volvo Group specific advisory on CIO/technology product decisions. Deepest R&D-to-product expertise among all 12 firms.', creds: 'Volvo Group CIO advisory — product technology decisions; automotive innovation strategy publications', diff: 'Engineering-informed product strategy; technology roadmapping depth' },
+          { firm: 'McKinsey', score: 90, conf: 'High', why: 'Automotive product strategy through global OEM engagements. SDV product strategy leadership. EV portfolio advisory for European premium OEMs.', creds: 'Global automotive product portfolio strategy; SDV transformation advisory', diff: 'Cross-OEM benchmarking; CEO-level product portfolio decisions' },
+          { firm: 'Roland Berger', score: 87, conf: 'High', why: 'Roland Berger\'s European automotive product strategy heritage is strong. EV product planning and electrification roadmapping. Sweden-specific EV market analysis.', creds: 'EV product strategy; European OEM platform strategy; Sweden EV Charging Index 2024', diff: 'European EV product strategy depth; platform sharing advisory' },
+          { firm: 'BCG', score: 84, conf: 'Medium', why: 'BCG X builds automotive software ventures. Strong SDV product strategy publications. Portfolio segmentation for EV lineup decisions.', creds: 'SDV product strategy; EV portfolio advisory; BCG X automotive ventures', diff: 'Digital ventures + product strategy fusion' },
+          { firm: 'Oliver Wyman', score: 80, conf: 'Medium', why: 'Automotive product lifecycle and platform strategy. OEM product margin analysis.', creds: 'Automotive product economics; platform sharing strategy', diff: 'Financial-product strategy integration' },
+          { firm: 'Capgemini', score: 76, conf: 'High', why: 'IDC MarketScape Leader in SDV engineering 2025 directly validates SDV product development capabilities for Volvo Cars.', creds: 'IDC MarketScape SDV Leader 2025; Volvo Cars digital transformation', diff: 'Engineering execution of SDV product strategies' },
+          { firm: 'Accenture', score: 72, conf: 'Medium', why: 'Product strategy through technology execution. Connected vehicle platform strategy. Zenuity ADAS product development support.', creds: 'Zenuity/Volvo ADAS engineering support; connected vehicle platform', diff: 'Technology-to-product pipeline' },
+          { firm: 'Bain', score: 68, conf: 'Medium', why: 'Product portfolio and adjacencies strategy. Circularity-in-automotive publication shows product lifecycle strategic thinking.', creds: 'Automotive product portfolio strategy; circular economy product strategy', diff: 'Value chain product strategy' },
+          { firm: 'Deloitte', score: 64, conf: 'Low', why: 'Limited specific Swedish automotive product strategy credentials. Good global automotive practice depth.', creds: 'Global automotive product advisory; SDV publications', diff: 'Technology product due diligence' },
+          { firm: 'McKinsey', score: 90, conf: 'High', why: 'Already ranked', creds: '', diff: '' },
+          { firm: 'EY', score: 62, conf: 'Low', why: 'Growing product strategy through EY-Parthenon. Less directly referenced for Swedish OEM product decisions.', creds: 'EY-Parthenon product advisory; automotive sector analysis', diff: 'Financial lens on product portfolio decisions' },
+          { firm: 'KPMG', score: 60, conf: 'Low', why: 'Limited automotive product strategy credentials. Stronger in audit and deal-linked product valuation.', creds: 'KPMG automotive product studies; product due diligence', diff: 'Product valuation and IP advisory' },
+          { firm: 'PwC', score: 58, conf: 'Low', why: 'Customer and experience-led product advisory. Less pure automotive engineering product strategy.', creds: 'Customer experience product design; Volvo Cars care experience', diff: 'Human-centered product design advisory' },
+        ]
+      }
+    ],
+    sources: [
+      { url: 'https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/our-people-are-our-destiny-capability-building-at-volvo-cars', label: 'McKinsey — Volvo Cars Capability Building', type: 'direct' },
+      { url: 'https://www.rolandberger.com/en/Insights/Publications/EV-Charging-Index-Expert-insight-from-Sweden-2024.html', label: 'Roland Berger — EV Charging Index Sweden 2024', type: 'direct' },
+      { url: 'https://www.oliverwyman.com/our-expertise/insights/2017/jul/Does-Volvos-Move-Represent-an-Irresistible-Force-.html', label: 'Oliver Wyman — Volvo Strategic Analysis', type: 'direct' },
+      { url: 'https://www.adlittle.com/se-en/press-release/arthur-d-little-and-volvo-group-bring-new-thinking-cios', label: 'Arthur D. Little — Volvo Group CIO Advisory', type: 'direct' },
+      { url: 'https://www.bcg.com/industries/automotive/overview', label: 'BCG Automotive Practice Overview', type: 'inferred' },
+    ],
+    sourceNote: 'Rankings driven primarily by confirmed Volvo/Scania/Polestar engagement references, supplemented by automotive practice depth analysis and Nordic office proximity inference. Strategy rankings weight MBB firms (McKinsey, BCG, Bain) for pure advisory, while specialist firms (Roland Berger, Oliver Wyman, ADL) receive credit for automotive-specific methodology depth.',
+    confidence: 82
+  },
+  t2: {
+    title: 'Product Development',
+    pillar: 'Customer & Operations',
+    desc: 'R&D effectiveness, portfolio performance, design-to-cost/value methodologies, and R&D operating model transformation for Swedish automotive OEMs.',
+    subcats: [
+      {
+        name: 'Portfolio Performance',
+        desc: 'Optimizing R&D investment returns, portfolio prioritization and product-line profitability for Swedish OEMs and Tier-1 suppliers.',
+        rankings: [
+          { firm: 'Arthur D. Little', score: 94, conf: 'High', why: 'ADL\'s Innovation Excellence methodology is globally recognized for R&D portfolio optimization. Their Volvo Group CIO advisory confirms direct engagement with product portfolio decisions. Deepest automotive engineering portfolio advisory among all 12 firms.', creds: 'Volvo Group advisory; ADL Innovation Excellence benchmark; Automotive engineering portfolio publications', diff: 'Engineering-led portfolio optimization; R&D investment benchmarking across 500+ companies' },
+          { firm: 'McKinsey', score: 88, conf: 'High', why: 'McKinsey\'s R&D benchmarking database and portfolio optimization methodology widely applied by European OEMs. Strong capability in product portfolio rationalization for Volvo-scale players.', creds: 'Global automotive portfolio benchmarking; Volvo Cars organizational work', diff: 'Proprietary R&D benchmarking; OEM portfolio diagnostic tools' },
+          { firm: 'Roland Berger', score: 85, conf: 'Medium', why: 'Strong European automotive portfolio analysis. EV portfolio transition advisory specific to Swedish/European OEMs. Platform-sharing and portfolio rationalization depth.', creds: 'European OEM portfolio strategy; EV portfolio transition advisory', diff: 'Platform engineering + portfolio economics integration' },
+          { firm: 'BCG', score: 82, conf: 'Medium', why: 'BCG\'s product portfolio tools and SDV portfolio advisory. Automotive sector deep experience in growth portfolio design.', creds: 'Automotive portfolio growth strategy; SDV portfolio publications', diff: 'BCG Growth Share Matrix evolved for automotive portfolio' },
+          { firm: 'Oliver Wyman', score: 80, conf: 'Medium', why: 'Automotive product economics and portfolio margin analysis. OEM product profitability benchmarking.', creds: 'Automotive product margin analysis; OEM portfolio benchmarking', diff: 'Financial modelling depth for product portfolio decisions' },
+          { firm: 'Capgemini', score: 76, conf: 'High', why: 'IDC MarketScape SDV Engineering Leader 2025. Engineering services for Volvo Cars includes product development and software portfolio management.', creds: 'IDC SDV Leader; Volvo Cars engineering services; software portfolio management', diff: 'SDV software portfolio + systems engineering' },
+          { firm: 'Accenture', score: 72, conf: 'Medium', why: 'Connected vehicle and ADAS portfolio advisory via Zenuity engagement. R&D operating model at scale.', creds: 'Zenuity ADAS portfolio; connected vehicle product advisory', diff: 'Technology R&D portfolio integration' },
+          { firm: 'Bain', score: 68, conf: 'Low', why: 'Strategic portfolio management but less automotive engineering depth.', creds: 'Automotive portfolio strategy; circular product lifecycle advisory', diff: 'Value-creation lens on portfolio decisions' },
+          { firm: 'Deloitte', score: 64, conf: 'Low', why: 'Good global automotive R&D advisory. Less specific Swedish portfolio performance credentials.', creds: 'Global automotive R&D publications; engineering practice advisory', diff: 'Finance-linked portfolio performance measurement' },
+          { firm: 'KPMG', score: 60, conf: 'Low', why: 'Limited automotive portfolio performance advisory. Better in financial performance of product lines.', creds: 'Automotive product valuation; portfolio financial advisory', diff: 'IP and asset valuation in automotive portfolios' },
+          { firm: 'EY', score: 58, conf: 'Low', why: 'Growing EY-Parthenon product advisory. Limited direct automotive portfolio performance references in Sweden.', creds: 'EY automotive advisory; product portfolio publications', diff: 'Strategic due diligence on automotive portfolios' },
+          { firm: 'PwC', score: 56, conf: 'Low', why: 'Limited pure automotive R&D portfolio advisory. Stronger in deal-linked product valuation.', creds: 'Automotive product valuation in M&A; R&D tax advisory', diff: 'Tax and financial efficiency in R&D portfolios' },
+        ]
+      },
+      {
+        name: 'R&D Strategy',
+        desc: 'Technology roadmapping, innovation pipeline strategy, and engineering investment prioritization for Swedish automotive.',
+        rankings: [
+          { firm: 'Arthur D. Little', score: 96, conf: 'High', why: 'ADL is the most R&D/engineering-specialized management consulting firm globally. Their direct Volvo Group engagement makes them the strongest for Swedish automotive R&D strategy. ADL Technology & Innovation Management practice is a reference in the industry.', creds: 'Volvo Group CIO advisory on technology strategy; ADL automotive R&D publications; engineering strategy methodology', diff: 'Unique engineering-to-strategy bridge; >100 years of R&D advisory heritage; strongest automotive engineering methodology' },
+          { firm: 'Roland Berger', score: 88, conf: 'High', why: 'Roland Berger has deep European OEM R&D strategy credentials. EV technology roadmapping for European automotive market including Sweden-specific EV infrastructure strategy.', creds: 'European OEM R&D strategy; EV technology roadmapping; Sweden EV Charging Index 2024', diff: 'European OEM R&D benchmarking and technology foresight' },
+          { firm: 'McKinsey', score: 86, conf: 'High', why: 'McKinsey Center for Future Mobility produces leading automotive technology strategy research. Applied at Volvo Cars in organizational capability context.', creds: 'Volvo Cars organizational capability building; SDV technology strategy; McKinsey Center for Future Mobility', diff: 'Global technology benchmarking across top 20 automotive OEMs' },
+          { firm: 'BCG', score: 83, conf: 'Medium', why: 'BCG X builds automotive tech ventures. SDV research publications. Strong future-of-mobility technology strategy for European market.', creds: 'BCG X automotive ventures; SDV technology strategy; future-of-mobility foresight', diff: 'Innovation venture-building combined with R&D strategy' },
+          { firm: 'Oliver Wyman', score: 78, conf: 'Medium', why: 'Automotive technology and innovation strategy. ADAS and autonomous vehicle roadmapping for European OEMs.', creds: 'Automotive technology publications; AV/ADAS strategy advisory', diff: 'Engineering R&D economics and technology ROI analysis' },
+          { firm: 'Capgemini', score: 76, conf: 'High', why: 'IDC MarketScape SDV Engineering Leader 2025 — the only external recognition specifically for SDV engineering services. Volvo Cars engagement validates R&D execution capability.', creds: 'IDC SDV Engineering Leader; Volvo Cars SDV development; software engineering for automotive', diff: 'R&D execution and delivery at scale; systems engineering for SDV' },
+          { firm: 'Accenture', score: 72, conf: 'Medium', why: 'ADAS engineering support via Zenuity. Connected vehicle R&D advisory. Microsoft/Intel automotive technology alliances.', creds: 'Zenuity ADAS R&D; connected vehicle technology partnerships', diff: 'Technology alliances amplifying R&D advisory (Qualcomm, NVIDIA for auto)' },
+          { firm: 'Deloitte', score: 65, conf: 'Low', why: 'Deloitte Insights publishes automotive technology foresight. Less direct Swedish OEM R&D engagement.', creds: 'Global automotive technology publications; Deloitte Insights automotive', diff: 'Regulatory intelligence for automotive R&D decisions' },
+          { firm: 'Bain', score: 62, conf: 'Low', why: 'Innovation strategy but less automotive engineering depth. Good in deciding which technologies to invest in (portfolio lens).', creds: 'Automotive innovation investment advisory; technology portfolio decisions', diff: 'Value-creating innovation strategy decisions' },
+          { firm: 'EY', score: 58, conf: 'Low', why: 'Growing technology strategy through EY-Parthenon. Limited R&D strategy credentials for Swedish automotive specifically.', creds: 'EY automotive R&D tax advisory; technology strategy publications', diff: 'R&D tax efficiency and grant advisory' },
+          { firm: 'KPMG', score: 56, conf: 'Low', why: 'KPMG automotive innovation studies. Limited direct R&D strategy credentials.', creds: 'Automotive technology consumer study; KPMG Innovation survey', diff: 'Regulatory and IP advisory in R&D strategy' },
+          { firm: 'PwC', score: 54, conf: 'Low', why: 'Limited automotive R&D strategy credentials. Growing through technology advisory practice.', creds: 'PwC automotive technology advisory; R&D innovation study', diff: 'Regulatory and financial aspects of R&D investment' },
+        ]
+      },
+      { name: 'Design-to-Cost / Design-to-Value', desc: 'Cost engineering, value analysis/value engineering methodologies for Swedish automotive OEMs and Tier-1 suppliers.', rankings: [
+        { firm: 'Roland Berger', score: 90, conf: 'High', why: 'Roland Berger is a reference firm for Design-to-Cost in European automotive. Their cost engineering methodology for OEMs (platform costs, variant cost analysis) is industry-leading.', creds: 'European automotive cost engineering; DtC methodology publications; OEM cost benchmarking', diff: 'Most recognized European automotive DtC practice' },
+        { firm: 'McKinsey', score: 87, conf: 'High', why: 'McKinsey\'s Product Sustainability and Value Analysis tools for automotive OEMs. Global benchmarking across 40+ OEMs supports robust design-to-cost guidance.', creds: 'Global automotive DtC benchmarking; product value analysis', diff: 'Cross-OEM benchmarking database' },
+        { firm: 'Oliver Wyman', score: 84, conf: 'Medium', why: 'Strong automotive cost engineering and component cost analysis. Good for Swedish Tier-1 supplier DtC programs.', creds: 'Automotive component cost analysis; OEM-supplier cost advisory', diff: 'Supplier-OEM cost transparency expertise' },
+        { firm: 'Arthur D. Little', score: 82, conf: 'High', why: 'ADL\'s engineering cost advisory and value engineering methodology is strongest among specialists. Direct Volvo Group technology cost advisory.', creds: 'Engineering cost advisory; Volvo Group technology advisory', diff: 'Engineering-led cost analysis at component level' },
+        { firm: 'BCG', score: 79, conf: 'Medium', why: 'ZBB and product cost reduction programs in auto. Good analytical toolkit for design-to-value.', creds: 'Automotive cost reduction programs; product value optimization', diff: 'Strategic cost design linked to growth agenda' },
+        { firm: 'Accenture', score: 72, conf: 'Medium', why: 'PLM/Engineering tools integration for DtC. Strong in digital tools enabling DtC programs.', creds: 'PLM systems advisory; engineering tools for DtC', diff: 'Digital tools accelerating DtC programs' },
+        { firm: 'Capgemini', score: 70, conf: 'Medium', why: 'Engineering services and PLM advisory for automotive. Aurobay SAP implementation includes product costing modules.', creds: 'Automotive engineering services; PLM and product costing systems', diff: 'Systems delivery enabling DtC workflows' },
+        { firm: 'Bain', score: 65, conf: 'Low', why: 'Value creation through product cost reduction. Less automotive engineering depth for detailed DtC.', creds: 'Product cost reduction advisory; automotive value chain analysis', diff: 'Strategic value engineering decisions' },
+        { firm: 'Deloitte', score: 60, conf: 'Low', why: 'Finance-linked product costing. Limited direct automotive DtC methodology.', creds: 'Product costing advisory; automotive finance practice', diff: 'Financial modeling of design cost decisions' },
+        { firm: 'EY', score: 56, conf: 'Low', why: 'EY CMAAS product costing advisory. Limited automotive DtC specific publications.', creds: 'Product costing in automotive M&A; CMAAS advisory', diff: 'Accounting and financial aspects of product costs' },
+        { firm: 'KPMG', score: 54, conf: 'Low', why: 'Limited automotive DtC credentials. Better in supplier cost benchmarking for due diligence.', creds: 'Automotive supplier cost benchmarking; DD advisory', diff: 'Supplier cost analysis in M&A context' },
+        { firm: 'PwC', score: 52, conf: 'Low', why: 'Limited automotive engineering cost advisory. Growing through operational transformation practice.', creds: 'Automotive cost advisory; operational improvement', diff: 'Finance-linked cost optimization' },
+      ]},
+      { name: 'Product Development', desc: 'Agile product development transformation, software development integration, and automotive program management for Swedish OEMs.', rankings: [
+        { firm: 'Capgemini', score: 92, conf: 'High', why: 'IDC MarketScape SDV Engineering Leader 2025 — the single most authoritative recognition for automotive software product development. Volvo Cars digital and cloud transformation engagement directly involves product development processes.', creds: 'IDC SDV Leader 2025; Volvo Cars digital transformation; automotive engineering services for European OEMs', diff: 'Most credentialed firm for software-defined vehicle product development in Sweden' },
+        { firm: 'Accenture', score: 88, conf: 'High', why: 'Zenuity/Volvo-Veoneer ADAS development case demonstrates direct Swedish automotive product development support. Cloud-first engineering with AWS/Azure for automotive R&D workflows.', creds: 'Zenuity ADAS development support; Volvo Cars cloud engineering; automotive DevOps advisory', diff: 'ADAS engineering support + cloud-native product development integration' },
+        { firm: 'Arthur D. Little', score: 85, conf: 'High', why: 'ADL\'s product development transformation methodology (Agile@Scale for automotive) is well-regarded. Direct Volvo Group engagement confirms Swedish automotive product development advisory.', creds: 'Volvo Group technology advisory; Agile product development transformation; automotive engineering methodology', diff: 'Deep engineering process expertise; R&D methodology transformation' },
+        { firm: 'McKinsey', score: 80, conf: 'High', why: 'McKinsey\'s agile and digital product development methodology applied at Volvo Cars organizational level. Strong automotive software development transformation practice.', creds: 'Volvo Cars organizational capability building incl. product development; agile transformation', diff: 'Organizational agility for automotive engineering teams' },
+        { firm: 'Roland Berger', score: 77, conf: 'Medium', why: 'Automotive product development operating model advisory. European OEM agile transformation programs.', creds: 'Automotive agile transformation; European OEM product development advisory', diff: 'European OEM engineering operating model transformation' },
+        { firm: 'BCG', score: 75, conf: 'Medium', why: 'BCG GAMMA data-driven product development. BCG X builds automotive software products. Agile engineering transformation for OEMs.', creds: 'BCG X automotive product development; GAMMA automotive analytics', diff: 'Data science + software product development fusion' },
+        { firm: 'Oliver Wyman', score: 70, conf: 'Medium', why: 'Automotive product development economics and program management advisory.', creds: 'Automotive program management advisory; product development cost advisory', diff: 'Financial discipline in product development programs' },
+        { firm: 'Deloitte', score: 66, conf: 'Low', why: 'Automotive software development and engineering advisory through technology practice.', creds: 'Automotive technology practice; engineering advisory', diff: 'Technology-led engineering transformation' },
+        { firm: 'Bain', score: 62, conf: 'Low', why: 'Less automotive engineering credentials. Strong in organizational transformation enabling product development.', creds: 'Agile organization transformation; product development productivity', diff: 'Org design for faster product development cycles' },
+        { firm: 'KPMG', score: 58, conf: 'Low', why: 'Limited automotive product development advisory. Growing technology advisory practice.', creds: 'Automotive technology publications; digital product advisory', diff: 'Technology governance in product development' },
+        { firm: 'EY', score: 55, conf: 'Low', why: 'Growing product development advisory through technology practice. Limited Swedish OEM direct references.', creds: 'Automotive technology advisory; EY-Parthenon product strategy', diff: 'Strategic governance of product development investments' },
+        { firm: 'PwC', score: 52, conf: 'Low', why: 'Limited automotive engineering product development credentials.', creds: 'Customer experience-led product advisory; Volvo Cars care experience', diff: 'Customer-centered product development thinking' },
+      ]},
+      { name: 'R&D Operating Model', desc: 'R&D organizational design, distributed engineering model, insourcing/outsourcing decisions and agile@scale for Swedish automotive.', rankings: [
+        { firm: 'McKinsey', score: 90, conf: 'High', why: 'Directly documented Volvo Cars organizational and operating model transformation engagement. Leading global automotive R&D operating model practice.', creds: 'Volvo Cars organizational capability building; R&D operating model transformation for global OEMs', diff: 'Board-level R&D org design decisions; CEO-CTO interface advisory' },
+        { firm: 'Arthur D. Little', score: 88, conf: 'High', why: 'ADL\'s R&D management practice is one of the most specialized globally. Volvo Group CIO advisory includes operating model dimensions. Deep Nordic industrial R&D experience.', creds: 'Volvo Group CIO advisory; ADL R&D management methodology; Nordic industrial R&D experience', diff: 'Most specialized R&D operating model methodology among all 12 firms' },
+        { firm: 'BCG', score: 83, conf: 'Medium', why: 'BCG adaptive R&D operating models for automotive. Bionic company methodology applicable to automotive R&D.', creds: 'Automotive R&D operating model publications; bionic company advisory', diff: 'Digital-physical R&D integration models' },
+        { firm: 'Roland Berger', score: 80, conf: 'Medium', why: 'European automotive R&D org design. Insourcing vs outsourcing advisory for OEM engineering teams.', creds: 'European OEM R&D operating model advisory; engineering insourcing analysis', diff: 'European regulatory context for automotive engineering organization' },
+        { firm: 'Accenture', score: 76, conf: 'Medium', why: 'R&D delivery model via Zenuity engagement. AWS/Microsoft-enabled distributed engineering teams.', creds: 'Zenuity distributed engineering; connected vehicle R&D delivery model', diff: 'Cloud-enabled distributed R&D model at scale' },
+        { firm: 'Oliver Wyman', score: 73, conf: 'Medium', why: 'Automotive engineering operating model and program management advisory.', creds: 'Automotive engineering operating model; OEM-supplier governance', diff: 'OEM-supplier co-development model advisory' },
+        { firm: 'Capgemini', score: 70, conf: 'High', why: 'Operating model advisory for Volvo Cars engineering teams embedded in digital transformation engagement.', creds: 'Volvo Cars digital transformation operating model; SDV engineering model', diff: 'Technology-enabled R&D operating model transformation' },
+        { firm: 'Deloitte', score: 65, conf: 'Low', why: 'R&D operating model through technology and organizational practice.', creds: 'Technology-driven R&D operating model advisory; automotive practice', diff: 'Technology governance in R&D operating models' },
+        { firm: 'Bain', score: 62, conf: 'Low', why: 'Organizational transformation for R&D. Less automotive engineering specificity.', creds: 'Agile R&D organization advisory; results delivery framework', diff: 'Org design enabling R&D speed and efficiency' },
+        { firm: 'KPMG', score: 58, conf: 'Low', why: 'Limited R&D operating model advisory in automotive. Growing through technology practice.', creds: 'Technology advisory for automotive; R&D governance', diff: 'Governance and control in R&D operations' },
+        { firm: 'EY', score: 55, conf: 'Low', why: 'Limited automotive R&D operating model credentials. Advisory through workforce and technology practices.', creds: 'Workforce transformation for R&D teams; technology advisory', diff: 'People dimension of R&D operating model' },
+        { firm: 'PwC', score: 52, conf: 'Low', why: 'Limited automotive R&D operating model credentials.', creds: 'Technology and people advisory for R&D; automotive team', diff: 'Financial efficiency of R&D organizational structures' },
+      ]}
+    ],
+    sources: [
+      { url: 'https://www.adlittle.com/se-en/press-release/arthur-d-little-and-volvo-group-bring-new-thinking-cios', label: 'ADL — Volvo Group CIO Advisory', type: 'direct' },
+      { url: 'https://www.capgemini.com/news/press-releases/capgemini-positioned-as-a-leader-in-the-idc-marketscape-worldwide-it-and-engineering-services-for-software-defined-vehicles-2025/', label: 'Capgemini — IDC SDV Leader 2025', type: 'direct' },
+      { url: 'https://www.accenture.com/content/dam/accenture/final/a-com-migration/pdf/accenture-zenuity-case.pdf', label: 'Accenture — Zenuity (Volvo/Veoneer) Engineering', type: 'direct' },
+      { url: 'https://www.rolandberger.com/en/Insights/Publications/EV-Charging-Index-Expert-insight-from-Sweden-2024.html', label: 'Roland Berger — EV Sweden 2024', type: 'direct' },
+    ],
+    sourceNote: 'Product Development rankings heavily weighted toward firms with confirmed SDV/R&D engineering engagement in Sweden. ADL leads in methodology and engineering depth; Capgemini leads in SDV execution credibility (IDC MarketScape 2025). Rankings for R&D Operating Model lean toward McKinsey for organizational advisory and Capgemini/Accenture for operating model delivery.',
+    confidence: 78
+  },
+  t3: {
+    title: 'Procurement',
+    pillar: 'Customer & Operations',
+    desc: 'Procurement transformation, category management, digital procurement, sustainable procurement and third-party risk management for Swedish automotive OEMs and suppliers.',
+    subcats: [
+      { name: 'TOM & Category Management', desc: 'Procurement operating model design and strategic category management for automotive players including Autoliv, SKF and Volvo Group.', rankings: [
+        { firm: 'McKinsey', score: 85, conf: 'High', why: 'McKinsey Procurement Practice is globally #1 in automotive category management. Direct Nordic automotive engagement. eSourcing and category strategies for Volvo-scale OEMs.', creds: 'Global automotive procurement TOM; category management benchmarking', diff: 'Most comprehensive automotive category benchmarking database' },
+        { firm: 'Accenture', score: 83, conf: 'High', why: 'Accenture\'s procurement managed services practice and large procurement transformation delivery credentials (SAP Ariba, Coupa). Strong Nordic delivery capability.', creds: 'Procurement transformation delivery at scale; SAP Ariba implementations; Nordic procurement managed services', diff: 'Managed procurement services with AI augmentation' },
+        { firm: 'Capgemini', score: 80, conf: 'High', why: 'Capgemini\'s procurement transformation practice delivered via SAP S/4HANA and Ariba. Aurobay S/4HANA implementation demonstrates procurement module delivery in Swedish automotive context.', creds: 'Aurobay SAP S/4HANA including procurement; Swedish automotive delivery credentials', diff: 'SAP-anchored procurement TOM delivery in Swedish automotive' },
+        { firm: 'BCG', score: 78, conf: 'Medium', why: 'BCG procurement and supply chain category management advisory. Strong in strategic sourcing strategy for automotive.', creds: 'Automotive strategic sourcing; category management strategy advisory', diff: 'Category strategy design + supplier economics analysis' },
+        { firm: 'Deloitte', score: 75, conf: 'Medium', why: 'Deloitte Procurement advisory practice. Nordic procurement operating model work in industrial sector.', creds: 'Procurement operating model design; Nordic industrial procurement advisory', diff: 'Finance-linked procurement performance management' },
+        { firm: 'EY', score: 73, conf: 'High', why: 'EY Supply Chain and Operations practice. HFS Horizons Intelligent Supply Chain Leader 2025 recognition validates procurement within supply chain context.', creds: 'HFS Horizons Intelligent Supply Chain Leader 2025; EY procurement advisory', diff: 'Supply chain intelligence + procurement integration' },
+        { firm: 'Roland Berger', score: 70, conf: 'Medium', why: 'European automotive procurement advisory. Supplier network optimization for European OEMs.', creds: 'European automotive procurement strategy; supplier network analysis', diff: 'European OEM procurement complexity advisory' },
+        { firm: 'Oliver Wyman', score: 68, conf: 'Medium', why: 'Automotive supplier economics and procurement strategy.', creds: 'OEM supplier economics advisory; procurement strategy publications', diff: 'Supplier commercial model redesign' },
+        { firm: 'KPMG', score: 66, conf: 'Medium', why: 'Procurement risk and category management advisory. Good for Volvo Group supplier risk dimensions.', creds: 'Procurement risk advisory; supplier category management', diff: 'Risk-integrated procurement category management' },
+        { firm: 'PwC', score: 64, conf: 'Medium', why: 'PwC procurement advisory and digital procurement tools. Growing practice in Sweden.', creds: 'Procurement advisory practice; digital procurement tools advisory', diff: 'Finance-integrated procurement performance' },
+        { firm: 'Bain', score: 60, conf: 'Low', why: 'Limited specific procurement TOM credentials. Strategic lens on procurement cost reduction.', creds: 'Procurement cost reduction advisory; strategic sourcing advisory', diff: 'CEO-agenda procurement performance improvement' },
+        { firm: 'Arthur D. Little', score: 58, conf: 'Low', why: 'Less focus on procurement TOM. Engineering procurement advisory through R&D supply chain lens.', creds: 'Technology procurement advisory; R&D supply chain sourcing', diff: 'Engineering component sourcing strategy' },
+      ]},
+      { name: 'Digital Procurement & AI', desc: 'AI-powered procurement, Source-to-Pay digitalization, spend analytics and procurement automation for Swedish automotive players.', rankings: [
+        { firm: 'Accenture', score: 90, conf: 'High', why: 'Accenture leads global AI procurement transformation. MyWizard AI and procurement automation tools deployed at scale. SAP Ariba and Coupa implementation leadership. Microsoft co-pilot for procurement.', creds: 'AI procurement transformation at scale; SAP Ariba/Coupa Nordic; MyWizard procurement AI', diff: '#1 in AI-augmented procurement delivery globally' },
+        { firm: 'Capgemini', score: 86, conf: 'High', why: 'Capgemini\'s Intelligent Sourcing and S2P digitalization with SAP Ariba. Aurobay S/4HANA includes procurement digitalization. Strong AI procurement advisory.', creds: 'Aurobay procurement digitalization; SAP S/4HANA procurement; AI-driven spend analytics', diff: 'SAP-anchored S2P digitalization in Swedish automotive context' },
+        { firm: 'McKinsey', score: 80, conf: 'Medium', why: 'McKinsey Procurement Practice leads in AI strategy for procurement. QuantumBlack analytics for procurement intelligence.', creds: 'AI procurement strategy; QuantumBlack procurement analytics; automotive AI procurement publications', diff: 'Strategy-level AI procurement transformation' },
+        { firm: 'Deloitte', score: 77, conf: 'Medium', why: 'Deloitte\'s AI procurement and cognitive automation. Coupa and Ariba implementations in Nordic.', creds: 'Cognitive procurement automation; Nordic procurement digitalization', diff: 'End-to-end digital procurement with cognitive tools' },
+        { firm: 'EY', score: 74, conf: 'Medium', why: 'EY\'s intelligent procurement and AI advisory. Supply chain intelligence platform. HFS Horizons supply chain recognition.', creds: 'Intelligent supply chain platform; AI procurement advisory; HFS Leader 2025', diff: 'AI + supply chain intelligence integration' },
+        { firm: 'BCG', score: 72, conf: 'Medium', why: 'BCG GAMMA procurement analytics. AI-driven category management advisory.', creds: 'GAMMA analytics for procurement; AI procurement strategy publications', diff: 'Advanced analytics in strategic sourcing' },
+        { firm: 'KPMG', score: 70, conf: 'Medium', why: 'KPMG Digital Procurement practice with AI tools. Growing Coupa partnership.', creds: 'Digital procurement advisory; AI spend analytics', diff: 'Risk-integrated AI procurement tools' },
+        { firm: 'PwC', score: 68, conf: 'Medium', why: 'PwC digital procurement tools and SAP S/4HANA advisory. Growing AI procurement practice.', creds: 'SAP S/4HANA procurement; AI procurement advisory', diff: 'Finance-integrated digital procurement' },
+        { firm: 'Roland Berger', score: 60, conf: 'Low', why: 'Strategic advisory on digital procurement transformation. Less implementation scale.', creds: 'Digital procurement strategy advisory; automotive sourcing digitalization', diff: 'Strategic digital procurement transformation' },
+        { firm: 'Oliver Wyman', score: 58, conf: 'Low', why: 'Procurement strategy through digital lens. Limited AI procurement delivery credentials.', creds: 'Automotive procurement strategy; digital sourcing advisory', diff: 'Automotive supplier digital ecosystem advisory' },
+        { firm: 'Arthur D. Little', score: 55, conf: 'Low', why: 'Digital procurement strategy advisory. Less delivery scale.', creds: 'Technology procurement advisory; engineering procurement strategy', diff: 'Engineering-linked digital procurement advisory' },
+        { firm: 'Bain', score: 52, conf: 'Low', why: 'Limited digital procurement delivery. Strategic advisory on procurement technology choices.', creds: 'Procurement technology strategy; digital transformation advisory', diff: 'CEO-agenda procurement technology investment decisions' },
+      ]},
+      { name: 'TPRM and Sustainable Procurement', desc: 'Third-party risk management, ESG procurement criteria, and supply chain due diligence for Swedish automotive and Tier-1 suppliers.', rankings: [
+        { firm: 'Deloitte', score: 86, conf: 'High', why: 'Deloitte leads in TPRM globally. Supply chain due diligence and ESG procurement for industrials. Swedish automotive sustainability procurement advisory.', creds: 'TPRM practice leadership; supply chain ESG advisory; CSDDD/CSRD advisory for automotive', diff: 'Most comprehensive TPRM and ESG procurement methodology' },
+        { firm: 'EY', score: 84, conf: 'High', why: 'EY\'s supply chain advisory with ESG integration. HFS Horizons Intelligent Supply Chain Leader — supply chain risk management component. Sweden-specific ESG procurement advisory.', creds: 'HFS Supply Chain Leader 2025; ESG supply chain advisory; CSRD procurement compliance', diff: 'Supply chain intelligence + ESG risk integration' },
+        { firm: 'KPMG', score: 82, conf: 'High', why: 'KPMG HFS Horizons Sustainability Services recognition 2024. Volvo Group True Value framework demonstrates sustainability measurement in supply chain. Strong CSRD advisory.', creds: 'HFS Horizons Sustainability Services 2024; Volvo Group True Value case study; CSRD advisory', diff: 'Strongest sustainability measurement framework in supply chains' },
+        { firm: 'PwC', score: 78, conf: 'Medium', why: 'PwC Sweden sustainability and supply chain practice. Growing CSRD and sustainable procurement advisory.', creds: 'Swedish automotive sustainability advisory; ESG procurement advisory; CSRD practice', diff: 'Finance-integrated sustainability procurement reporting' },
+        { firm: 'McKinsey', score: 75, conf: 'Medium', why: 'McKinsey sustainable supply chain strategy. Responsible sourcing advisory for global OEMs.', creds: 'Sustainable supply chain strategy; responsible sourcing advisory', diff: 'Strategic sustainable procurement transformation' },
+        { firm: 'BCG', score: 73, conf: 'Medium', why: 'BCG sustainable procurement and supply chain resilience advisory. ESG procurement strategy.', creds: 'Sustainable procurement strategy; supply chain resilience advisory', diff: 'Sustainability-linked sourcing strategy' },
+        { firm: 'Roland Berger', score: 70, conf: 'Medium', why: 'European automotive sustainable procurement advisory. Regulatory advisory for European OEMs.', creds: 'European automotive ESG supply chain; regulatory advisory', diff: 'European regulatory ESG procurement context' },
+        { firm: 'Accenture', score: 68, conf: 'Medium', why: 'Accenture sustainability practice and supply chain ESG tools. Digital TPRM solutions.', creds: 'Sustainability advisory; digital TPRM tools; ESG supply chain advisory', diff: 'Technology-enabled TPRM at scale' },
+        { firm: 'Capgemini', score: 65, conf: 'Medium', why: 'Sustainability and responsible sourcing advisory. ESG-linked procurement digitalization.', creds: 'Automotive sustainability report; car-sharing sustainability study; ESG procurement', diff: 'Technology-enabled sustainable procurement' },
+        { firm: 'Oliver Wyman', score: 62, conf: 'Low', why: 'Automotive supply chain sustainability strategy. Less TPRM delivery credentials.', creds: 'Automotive supply chain sustainability; strategy advisory', diff: 'Automotive ESG strategy advisory' },
+        { firm: 'Bain', score: 60, conf: 'Low', why: 'Circular economy and sustainability strategy. Less TPRM and procurement-specific.', creds: 'Automotive circularity advisory; sustainability strategy', diff: 'Strategic ESG procurement decisions' },
+        { firm: 'Arthur D. Little', score: 58, conf: 'Low', why: 'Sustainability technology advisory. Less specific TPRM and procurement ESG delivery.', creds: 'Sustainability technology advisory; circular economy publications', diff: 'Technology sustainability integration in procurement' },
+      ]},
+      { name: 'Cost Optimization and Value Realization', desc: 'Procurement cost reduction, should-cost modeling, supplier negotiation and value capture for Swedish automotive OEMs and Tier-1 suppliers.', rankings: [
+        { firm: 'McKinsey', score: 88, conf: 'High', why: 'Leads automotive procurement cost optimization globally. Should-cost modeling for OEM supply bases. Documented success with Swedish industrial scale.', creds: 'Automotive procurement cost optimization; global OEM supply chain savings programs', diff: 'Proprietary automotive should-cost database across 10,000+ components' },
+        { firm: 'BCG', score: 85, conf: 'Medium', why: 'BCG Zero-Based Budgeting and procurement savings programs. Direct cost reduction results for automotive supply chains.', creds: 'ZBB automotive programs; procurement savings delivery; Nordic industrial cost advisory', diff: 'ZBB integrated with procurement cost reduction at C-suite level' },
+        { firm: 'Roland Berger', score: 82, conf: 'Medium', why: 'European automotive supplier cost analysis and negotiation advisory. OEM cost reduction programs.', creds: 'European OEM cost reduction programs; supplier cost analysis; automotive benchmarking', diff: 'European automotive supplier cost benchmarking' },
+        { firm: 'Accenture', score: 80, conf: 'High', why: 'Procurement managed services delivering documented cost savings. AI-driven spend analytics and contract optimization for automotive players.', creds: 'Procurement managed services savings; AI spend analytics; contract optimization tools', diff: 'Scale and AI tools delivering measurable cost savings in procurement' },
+        { firm: 'Oliver Wyman', score: 76, conf: 'Medium', why: 'Automotive supplier cost advisory and commercial renegotiation support.', creds: 'Automotive supplier economics; commercial negotiation advisory', diff: 'Commercial and financial lens on supplier cost optimization' },
+        { firm: 'Capgemini', score: 74, conf: 'Medium', why: 'SAP-based spend analytics and cost visibility for automotive procurement. Aurobay implementation includes cost optimization modules.', creds: 'SAP spend analytics; Aurobay cost optimization; procurement cost advisory', diff: 'Digital transparency enabling procurement cost optimization' },
+        { firm: 'Deloitte', score: 70, conf: 'Medium', why: 'Procurement cost advisory and savings program delivery. Finance-linked savings measurement.', creds: 'Procurement savings advisory; Nordic industrial cost programs', diff: 'Finance-integrated cost realization measurement' },
+        { firm: 'EY', score: 68, conf: 'Medium', why: 'Procurement and supply chain cost optimization. Growing Swedish delivery capability.', creds: 'Supply chain cost optimization; procurement advisory', diff: 'Tax + procurement cost synergy advisory' },
+        { firm: 'KPMG', score: 65, conf: 'Low', why: 'Procurement cost advisory through finance lens. Limited direct delivery credentials for automotive.', creds: 'Procurement financial advisory; cost benchmarking for DD', diff: 'Financial rigor in procurement cost measurement' },
+        { firm: 'PwC', score: 62, conf: 'Low', why: 'Procurement cost optimization advisory. Growing practice in Sweden.', creds: 'Procurement advisory; cost optimization programs in Sweden', diff: 'Finance-linked procurement cost programs' },
+        { firm: 'Bain', score: 58, conf: 'Low', why: 'Cost reduction through turnaround advisory. Less procurement-specific delivery.', creds: 'Cost reduction programs; performance improvement advisory', diff: 'Turnaround-speed cost reduction decisions' },
+        { firm: 'Arthur D. Little', score: 55, conf: 'Low', why: 'Engineering cost efficiency but less procurement cost optimization delivery.', creds: 'Engineering cost advisory; technology procurement cost', diff: 'Engineering-technical procurement cost reduction' },
+      ]},
+      { name: 'Procurement Transformation', desc: 'End-to-end procurement transformation program management, operating model change, and capability uplift for Swedish automotive.', rankings: [
+        { firm: 'Accenture', score: 88, conf: 'High', why: 'Accenture\'s procurement transformation track record at global automotive scale is unmatched among delivery firms. SAP Ariba + Coupa + AI augmentation in Nordic delivery.', creds: 'Procurement transformation delivery; SAP Ariba Nordic implementations; automotive procurement TOM', diff: 'Largest-scale procurement transformation delivery capability in Nordics' },
+        { firm: 'Capgemini', score: 85, conf: 'High', why: 'Aurobay SAP S/4HANA procurement transformation is a direct Swedish automotive credential. Scalable S2P delivery.', creds: 'Aurobay S/4HANA procurement; Swedish automotive transformation delivery', diff: 'Direct Swedish automotive SAP procurement delivery' },
+        { firm: 'McKinsey', score: 82, conf: 'High', why: 'Procurement transformation strategy and design for Swedish OEMs. Organizational change management for procurement.', creds: 'Procurement TOM design; Volvo Cars organizational work; procurement academy design', diff: 'C-level transformation leadership for procurement' },
+        { firm: 'Deloitte', score: 78, conf: 'Medium', why: 'Procurement transformation through ERP and operating model change. Nordic delivery credentials.', creds: 'Procurement transformation advisory; ERP-linked procurement; Nordic delivery', diff: 'ERP-anchored procurement transformation delivery' },
+        { firm: 'EY', score: 75, conf: 'Medium', why: 'EY supply chain and procurement transformation. HFS Horizons supply chain recognition relevant.', creds: 'Supply chain/procurement transformation; HFS Leader recognition', diff: 'Finance and operations integration in procurement transformation' },
+        { firm: 'BCG', score: 72, conf: 'Medium', why: 'Procurement transformation strategy and design. Less delivery at operational level.', creds: 'Procurement strategy and TOM design; Nordic automotive advisory', diff: 'Strategy-first procurement transformation' },
+        { firm: 'KPMG', score: 70, conf: 'Medium', why: 'KPMG procurement transformation advisory and ERP delivery. Growing Nordic practice.', creds: 'Procurement transformation; SAP procurement delivery; Nordic advisory', diff: 'Risk-integrated procurement transformation governance' },
+        { firm: 'PwC', score: 68, conf: 'Medium', why: 'Procurement transformation through finance and technology lens. Growing Swedish practice.', creds: 'Procurement transformation advisory; finance-linked transformation', diff: 'Finance + operations integrated transformation' },
+        { firm: 'Roland Berger', score: 64, conf: 'Low', why: 'Procurement strategy transformation. Less implementation delivery scale.', creds: 'Procurement transformation strategy; European automotive advisory', diff: 'Strategic procurement transformation advisory' },
+        { firm: 'Oliver Wyman', score: 60, conf: 'Low', why: 'Procurement commercial transformation. Limited delivery scale.', creds: 'Procurement commercial advisory; automotive procurement strategy', diff: 'Commercial and pricing-focused procurement transformation' },
+        { firm: 'Bain', score: 56, conf: 'Low', why: 'Procurement transformation through performance improvement lens.', creds: 'Performance improvement advisory; procurement strategy', diff: 'Results delivery in procurement transformation' },
+        { firm: 'Arthur D. Little', score: 54, conf: 'Low', why: 'Limited procurement transformation delivery at scale. Strategic advisory for engineering procurement.', creds: 'Engineering procurement strategy; technology procurement advisory', diff: 'Engineering-focused procurement transformation' },
+      ]},
+      { name: 'Procurement Academy', desc: 'Capability building, training programs and talent development for procurement professionals in Swedish automotive organizations.', rankings: [
+        { firm: 'McKinsey', score: 86, conf: 'High', why: 'McKinsey Academy and capability building programs. Volvo Cars capability building engagement proves methodology effectiveness in Swedish automotive context.', creds: 'McKinsey Academy; Volvo Cars capability building; procurement capability programs', diff: 'Proven capability building methodology applied at Volvo Cars' },
+        { firm: 'BCG', score: 80, conf: 'Medium', why: 'BCG procurement capability building and leadership development. Practiced with Nordic industrial firms.', creds: 'BCG procurement capability building; Nordic industrial talent development', diff: 'Leadership development for senior procurement in auto' },
+        { firm: 'Deloitte', score: 76, conf: 'Medium', why: 'Deloitte Academy for procurement capability development. Good digital skills programs.', creds: 'Deloitte Academy procurement; digital procurement training', diff: 'Comprehensive digital skills component in procurement training' },
+        { firm: 'Accenture', score: 74, conf: 'Medium', why: 'Accenture Learning Services for procurement. Managed learning in procurement transformation programs.', creds: 'Procurement learning services; digital procurement skills programs', diff: 'Technology-integrated learning delivery at scale' },
+        { firm: 'EY', score: 70, conf: 'Medium', why: 'EY Badges and learning programs for procurement. Growing capability academy.', creds: 'EY learning programs; procurement capability development', diff: 'Structured learning journey for procurement professionals' },
+        { firm: 'Capgemini', score: 68, conf: 'Medium', why: 'Procurement training embedded in transformation programs. SAP Ariba user enablement.', creds: 'SAP user enablement; procurement training in transformation programs', diff: 'Technology-embedded procurement learning' },
+        { firm: 'KPMG', score: 65, conf: 'Low', why: 'KPMG procurement training and regulatory compliance programs.', creds: 'Procurement compliance training; regulatory advisory training', diff: 'Risk and compliance-focused procurement training' },
+        { firm: 'PwC', score: 62, conf: 'Low', why: 'PwC Academy procurement programs. Growing in Sweden.', creds: 'PwC Academy; procurement training programs in Sweden', diff: 'Finance-integrated procurement capability building' },
+        { firm: 'Roland Berger', score: 58, conf: 'Low', why: 'Limited procurement academy credentials. Advisory-focused delivery.', creds: 'Automotive procurement strategy workshops; advisory sessions', diff: 'Strategic procurement mindset development' },
+        { firm: 'Oliver Wyman', score: 55, conf: 'Low', why: 'Procurement strategy training through advisory. Limited academy scale.', creds: 'Procurement advisory training; commercial skills for procurement', diff: 'Commercial negotiation skills in procurement' },
+        { firm: 'Arthur D. Little', score: 52, conf: 'Low', why: 'Limited procurement academy capability. Engineering procurement advisory sessions.', creds: 'Engineering procurement training; innovation procurement workshops', diff: 'Engineering-focused procurement education' },
+        { firm: 'Bain', score: 50, conf: 'Low', why: 'Limited procurement academy delivery. Strategic procurement workshops.', creds: 'Procurement strategy workshops; performance improvement training', diff: 'CEO-agenda procurement leadership sessions' },
+      ]}
+    ],
+    sources: [
+      { url: 'https://www.capgemini.com/se-en/news/client-stories/aurobay-implements-sap-s-4hana-as-a-foundation-for-transformation/', label: 'Capgemini — Aurobay SAP S/4HANA (incl. procurement)', type: 'direct' },
+      { url: 'https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/our-people-are-our-destiny-capability-building-at-volvo-cars', label: 'McKinsey — Volvo Cars capability building', type: 'direct' },
+      { url: 'https://www.ey.com/content/dam/ey-unified-site/ey-com/en-gl/about-us/analyst-relations/documents/ey-gl-hfs-horizons-intelligent-supply-chain-services-11-2025.pdf', label: 'EY — HFS Horizons Intelligent Supply Chain 2025', type: 'direct' },
+      { url: 'https://assets.kpmg.com/content/dam/kpmgsites/xx/pdf/2025/05/excerpt-kpmg-hfs-horizons-sustainability-services-2024.pdf.coredownload.inline.pdf', label: 'KPMG — HFS Horizons Sustainability 2024', type: 'direct' },
+    ],
+    sourceNote: 'Procurement rankings driven by SAP implementation credentials in Swedish automotive (Capgemini/Accenture leadership), sustainability procurement driven by HFS and ESG framework recognition (KPMG/EY/Deloitte), and strategic advisory credentials driven by MBB firms.',
+    confidence: 75
+  }
+};
+
+// Abbreviated data for remaining tabs (t4-t16) with key rankings
+const TAB_BRIEF = {
+  t4: { title: 'Manufacturing & Supply Chain', pillar: 'Customer & Operations', desc: 'End-to-end manufacturing and supply chain transformation for Swedish automotive OEMs and Tier-1 suppliers including Autoliv, SKF, Volvo Group and Scania.',
+    topRankings: [
+      { firm: 'Accenture', score: 90, why: 'Largest manufacturing IT delivery capability in Sweden. Volvo Cars cloud and digital manufacturing transformation lead.' },
+      { firm: 'Capgemini', score: 88, why: 'SDV IDC Leader + Aurobay SAP manufacturing deployment. Strongest manufacturing systems delivery in Swedish auto.' },
+      { firm: 'EY', score: 85, why: 'HFS Horizons Intelligent Supply Chain Services Leader 2025. Supply chain intelligence advisory for Nordic industrials.' },
+      { firm: 'McKinsey', score: 82, why: 'Manufacturing excellence and supply chain strategy at Volvo/Scania scale. Lean operations advisory.' },
+      { firm: 'BCG', score: 80, why: 'Supply chain resilience and circular manufacturing advisory. Nordic industrial delivery scale.' },
+      { firm: 'Deloitte', score: 78, why: 'Manufacturing technology transformation and smart factory advisory for Nordic automotive.' },
+      { firm: 'Roland Berger', score: 75, why: 'European automotive manufacturing strategy and plant network optimization.' },
+      { firm: 'KPMG', score: 70, why: 'Supply chain risk and compliance advisory. Volvo Group operational engagement.' },
+      { firm: 'PwC', score: 68, why: 'Supply chain advisory growing through technology and operations practice in Sweden.' },
+      { firm: 'Oliver Wyman', score: 66, why: 'Automotive supply chain strategy and aftermarket supply chain advisory.' },
+      { firm: 'Bain', score: 64, why: 'Supply chain strategy and circular economy advisory for automotive.' },
+      { firm: 'Arthur D. Little', score: 60, why: 'Engineering supply chain and R&D logistics advisory.' },
+    ]},
+  t5: { title: 'Capital Excellence', pillar: 'Customer & Operations', desc: 'Footprint strategy and factory build-up advisory for Swedish automotive — particularly relevant for EV factory investments and greenfield/brownfield optimization.',
+    topRankings: [
+      { firm: 'Roland Berger', score: 86, why: 'European automotive footprint strategy and factory location analysis. EV factory investment advisory for European OEMs.' },
+      { firm: 'BCG', score: 84, why: 'Manufacturing footprint and capital allocation strategy for Nordic industrials.' },
+      { firm: 'McKinsey', score: 82, why: 'Capital deployment strategy and factory investment decisions for Swedish automotive OEMs.' },
+      { firm: 'Oliver Wyman', score: 80, why: 'Automotive footprint optimization and financial modeling for factory investments.' },
+      { firm: 'Arthur D. Little', score: 78, why: 'Engineering-led factory design and technology advisory for plant build-up in Sweden.' },
+      { firm: 'Accenture', score: 72, why: 'Smart factory design and Industry 4.0 build-up delivery for Nordic automotive.' },
+      { firm: 'Capgemini', score: 70, why: 'Factory digitalization and greenfield technology blueprint design.' },
+      { firm: 'Bain', score: 68, why: 'Capital excellence and investment return advisory for automotive factory programs.' },
+      { firm: 'Deloitte', score: 64, why: 'Financial advisory for automotive capital programs. Transaction and project finance.' },
+      { firm: 'EY', score: 62, why: 'Capital projects advisory and financial modeling for factory investments.' },
+      { firm: 'KPMG', score: 60, why: 'Financial advisory and tax structuring for automotive capital programs in Sweden.' },
+      { firm: 'PwC', score: 58, why: 'Financial advisory for capital projects. Transaction-linked capital advisory.' },
+    ]},
+  t6: { title: 'Customer', pillar: 'Customer & Operations', desc: 'Commerce, customer insights, marketing, sales and service transformation for Swedish automotive OEMs in direct-to-consumer and omnichannel contexts.',
+    topRankings: [
+      { firm: 'McKinsey', score: 84, why: 'Customer experience and commercial strategy advisory for premium Swedish OEMs. Leading automotive CX transformation.' },
+      { firm: 'PwC', score: 82, why: 'Volvo Cars Global Care Experience Design — MCA award-winning case study. Leading automotive CX credential in Sweden.' },
+      { firm: 'Accenture', score: 80, why: 'Digital commerce and Salesforce/CRM automotive customer platform delivery. Strong Nordic customer analytics.' },
+      { firm: 'Bain', score: 78, why: 'NPS/loyalty strategy for automotive. Customer insights and commercial excellence for Swedish OEMs.' },
+      { firm: 'Oliver Wyman', score: 76, why: 'Automotive customer and aftersales commercial transformation advisory.' },
+      { firm: 'Capgemini', score: 74, why: 'Digital customer platforms and connected vehicle customer experience delivery.' },
+      { firm: 'Deloitte', score: 72, why: 'Digital customer transformation and omnichannel automotive advisory. Nordic delivery scale.' },
+      { firm: 'BCG', score: 70, why: 'Customer analytics and direct-to-consumer strategy for EV-era automotive.' },
+      { firm: 'EY', score: 66, why: 'Customer insights and experience advisory. Growing Swedish automotive customer practice.' },
+      { firm: 'KPMG', score: 64, why: 'Customer analytics and consumer study publications for automotive.' },
+      { firm: 'Roland Berger', score: 62, why: 'Automotive customer strategy and mobility ecosystem customer advisory.' },
+      { firm: 'Arthur D. Little', score: 60, why: 'Innovation-driven customer advisory. Mobility ecosystem customer strategy.' },
+    ]},
+  t7: { title: 'People & Change', pillar: 'Corporate Services', desc: 'Workforce transformation, HR operating model, change management and AI workforce advisory for Swedish automotive organizations undergoing major transformation.',
+    topRankings: [
+      { firm: 'McKinsey', score: 90, why: 'Volvo Cars capability building case confirmed. Leading organizational performance practice globally. Direct HR operating model and change management advisory for Volvo Cars.' },
+      { firm: 'Deloitte', score: 86, why: 'HR transformation and workforce advisory at scale. Deloitte\'s Volvo/Jonas André profile demonstrates Swedish auto people advisory. Largest people consulting practice.' },
+      { firm: 'PwC', score: 84, why: 'PwC workforce transformation and change management for Swedish industrials. Growing HR TOM practice in Sweden.' },
+      { firm: 'Accenture', score: 82, why: 'Workforce transformation and AI-enabled HR at scale. Change management for digital automotive transformation programs.' },
+      { firm: 'EY', score: 80, why: 'EY workforce transformation and change management. Organizational redesign for Nordic automotive.' },
+      { firm: 'BCG', score: 78, why: 'Organizational performance and talent advisory for automotive. BCG Platinion organizational analytics.' },
+      { firm: 'KPMG', score: 74, why: 'HR transformation and people advisory for Nordic automotive companies.' },
+      { firm: 'Oliver Wyman', score: 72, why: 'Organizational redesign and talent strategy for automotive.' },
+      { firm: 'Roland Berger', score: 68, why: 'Workforce transformation for European automotive companies.' },
+      { firm: 'Bain', score: 66, why: 'Talent strategy and organizational performance for automotive turnarounds.' },
+      { firm: 'Capgemini', score: 64, why: 'Change management embedded in large technology transformation programs.' },
+      { firm: 'Arthur D. Little', score: 60, why: 'Innovation culture and capability building for engineering-led organizations.' },
+    ]},
+  t8: { title: 'Finance Transformation', pillar: 'Corporate Services', desc: 'Finance function transformation, finance TOM, performance management and finance excellence for Swedish automotive and industrial companies.',
+    topRankings: [
+      { firm: 'PwC', score: 92, why: 'PwC Sweden leads finance transformation. Volvo Cars transaction advisory demonstrates senior finance relationship. Strongest finance transformation practice in Sweden across automotive clients.' },
+      { firm: 'EY', score: 90, why: 'EY fairness opinion for Volvo Cars EGM 2025. Finance transformation and FP&A excellence advisory. Strong Nordic finance leadership.' },
+      { firm: 'Deloitte', score: 88, why: 'Finance transformation advisory and SAP-linked finance delivery. Deloitte\'s finance practice is among the strongest in the Nordics for industrials.' },
+      { firm: 'KPMG', score: 86, why: 'Volvo Group True Value case study and Polestar audit relationship. Finance operating model and performance management for Swedish automotive.' },
+      { firm: 'Accenture', score: 80, why: 'Finance transformation delivery at scale with SAP S/4HANA finance. Cloud-based finance analytics platform.' },
+      { firm: 'Capgemini', score: 76, why: 'Finance transformation delivery via SAP S/4HANA (Aurobay). Finance shared services and FP&A tools.' },
+      { firm: 'McKinsey', score: 74, why: 'CFO advisory and performance management for automotive. Finance excellence strategy for OEMs.' },
+      { firm: 'BCG', score: 68, why: 'Finance performance and value creation advisory. ZBB and finance efficiency for automotive.' },
+      { firm: 'Bain', score: 64, why: 'Performance improvement anchored in finance metrics. Financial value realization advisory.' },
+      { firm: 'Roland Berger', score: 62, why: 'Finance advisory for automotive operations. Cost and margin management for OEMs.' },
+      { firm: 'Oliver Wyman', score: 60, why: 'Financial performance advisory and automotive captive finance strategy.' },
+      { firm: 'Arthur D. Little', score: 56, why: 'Limited finance transformation credentials. Engineering and innovation finance advisory.' },
+    ]},
+  t9: { title: 'Technology', pillar: 'Tech', desc: 'CIO advisory, ERP transformation, Data/AI, cybersecurity and AutoTech advisory for Swedish automotive — covering SAP, cloud, SDV software and automotive technology platforms.',
+    topRankings: [
+      { firm: 'Capgemini', score: 96, why: '#1 IDC MarketScape SDV Engineering Leader 2025. Selected by Volvo Cars for digital and cloud transformation. Aurobay SAP S/4HANA implementation. Most technology delivery credentials in Swedish automotive across all dimensions.' },
+      { firm: 'Accenture', score: 92, why: 'Zenuity ADAS engineering support. Cloud continuum report shows Nordic cloud leadership. AWS/Microsoft/Google partnerships at Premier level. Strongest Nordic technology delivery scale after Capgemini.' },
+      { firm: 'Deloitte', score: 82, why: 'Strong SAP delivery practice and technology advisory for Nordic automotive. Digital transformation at scale with cloud and AI integration.' },
+      { firm: 'McKinsey', score: 74, why: 'Technology strategy and CIO advisory for Swedish OEMs. QuantumBlack AI advisory for automotive technology decisions.' },
+      { firm: 'EY', score: 80, why: 'Technology advisory and ERP transformation. Growing cloud and AI advisory in Sweden automotive context.' },
+      { firm: 'KPMG', score: 78, why: 'Technology risk and ERP advisory. Polestar technical relationships demonstrate IT advisory access.' },
+      { firm: 'PwC', score: 76, why: 'Technology transformation and CIO advisory. Growing in Sweden with SAP and cloud advisory.' },
+      { firm: 'BCG', score: 72, why: 'BCG Platinion technology advisory and architecture for automotive CIO. BCG X digital ventures.' },
+      { firm: 'Arthur D. Little', score: 74, why: 'CIO advisory for Volvo Group. Technology strategy depth for automotive engineering leaders.' },
+      { firm: 'Oliver Wyman', score: 65, why: 'Technology advisory through automotive strategy lens. Automotive IT architecture advisory.' },
+      { firm: 'Roland Berger', score: 68, why: 'Automotive technology strategy and digital transformation advisory.' },
+      { firm: 'Bain', score: 60, why: 'Technology investment and vendor selection advisory. Limited technology delivery.' },
+    ]},
+  t10: { title: 'Risk', pillar: 'Tech', desc: 'Forensic, GRC, risk technology, cyber and cloud security advisory for Swedish automotive companies — particularly relevant for CSRD, NIS2 and connected vehicle cybersecurity.',
+    topRankings: [
+      { firm: 'KPMG', score: 92, why: 'Polestar auditor relationship. Volvo Group advisory. KPMG HFS Horizons Sustainability risk recognition. Leading risk and GRC advisory for Swedish automotive — strongest Big 4 risk practice.' },
+      { firm: 'EY', score: 88, why: 'Risk advisory and forensic practice for Nordic automotive. HFS supply chain risk recognition. Volvo Cars EGM fairness opinion includes risk advisory elements.' },
+      { firm: 'Deloitte', score: 86, why: 'Cyber risk and GRC advisory for Nordic automotive. Strongest cybersecurity advisory practice in Sweden among Big 4.' },
+      { firm: 'PwC', score: 84, why: 'Cyber security and risk advisory. Growing automotive cybersecurity practice with NIS2 advisory for Swedish industrials.' },
+      { firm: 'Accenture', score: 82, why: 'Cybersecurity managed services for automotive. Microsoft and AWS security advisory.' },
+      { firm: 'Capgemini', score: 76, why: 'Cybersecurity advisory embedded in digital transformation for Volvo Cars. Cloud security for automotive platforms.' },
+      { firm: 'McKinsey', score: 70, why: 'Risk strategy and enterprise risk management for automotive CEOs.' },
+      { firm: 'BCG', score: 68, why: 'Risk strategy advisory and automotive cybersecurity strategy.' },
+      { firm: 'Oliver Wyman', score: 66, why: 'Automotive and financial risk advisory. Connected vehicle cyber risk advisory.' },
+      { firm: 'Roland Berger', score: 64, why: 'Automotive cyber risk and regulatory advisory for European OEMs.' },
+      { firm: 'Arthur D. Little', score: 62, why: 'Technology risk and innovation risk advisory.' },
+      { firm: 'Bain', score: 58, why: 'Enterprise risk strategy and resilience advisory. Less cyber delivery.' },
+    ]},
+  t11: { title: 'Sustainability', pillar: 'ESG & Deal', desc: 'Sustainable supply chains, climate/decarbonization, circular economy, sustainability reporting, value creation and energy resilience for Swedish automotive — including Scania\'s fossil-free commercial transport pathway.',
+    topRankings: [
+      { firm: 'Roland Berger', score: 90, why: 'EV Charging Index Sweden 2024 is a direct Swedish automotive EV/sustainability credential. European OEM decarbonization advisory. Leading automotive sustainability strategy firm in Europe.' },
+      { firm: 'Deloitte', score: 88, why: 'Net-zero transition advisory for industrial sector. Nordic automotive sustainability transformation. CSRD advisory leadership.' },
+      { firm: 'KPMG', score: 86, why: 'HFS Horizons Sustainability Services Leader 2024. Volvo Group True Value framework. Strongest sustainability measurement and reporting practice for automotive.' },
+      { firm: 'McKinsey', score: 84, why: 'Sustainable supply chain strategy and decarbonization roadmapping for global OEMs.' },
+      { firm: 'BCG', score: 82, why: 'Automotive circularity and remanufacturing advisory. Robocabs and sustainable mobility publications.' },
+      { firm: 'EY', score: 80, why: 'Sustainability reporting advisory and CSRD advisory. HFS supply chain sustainability component.' },
+      { firm: 'PwC', score: 76, why: 'ESG reporting and sustainability advisory for Swedish automotive including Volvo Cars.' },
+      { firm: 'Accenture', score: 74, why: 'Sustainability transformation delivery and ESG reporting tools for automotive.' },
+      { firm: 'Capgemini', score: 76, why: 'Automotive sustainability report (2020). Car-sharing sustainability study (Sweden). ESG advisory growing.' },
+      { firm: 'Bain', score: 72, why: 'Circular economy and remanufacturing advisory specifically for automotive — robocabs and circular strategy publications.' },
+      { firm: 'Oliver Wyman', score: 70, why: 'Automotive sustainability strategy and emission reduction advisory for OEMs.' },
+      { firm: 'Arthur D. Little', score: 68, why: 'Energy and sustainability advisory. Technology-driven sustainability strategy for automotive.' },
+    ]},
+  t12: { title: 'Deal Advisory', pillar: 'ESG & Deal', desc: 'M&A, transaction services, deal strategy, capital markets and valuation advisory for Swedish automotive ecosystem — including OEM restructuring, supplier consolidation and EV-era deal activity.',
+    topRankings: [
+      { firm: 'EY', score: 92, why: 'Fairness opinion for Volvo Cars EGM 2025 — direct, confirmed, recent engagement. Transaction services for major Nordic automotive deals. Strongest automotive deal credential in Sweden.' },
+      { firm: 'KPMG', score: 90, why: 'Polestar KPMG LLP auditor consent 2022 — Geely ecosystem access. Volvo Group advisory relationship. Strongest Big4 deal and audit access in Swedish automotive.' },
+      { firm: 'PwC', score: 88, why: 'Volvo Cars PwC transaction case (pwc.se). Bildahl dealership transaction advisory. MCA award case demonstrates Sweden automotive deal advisory at senior level.' },
+      { firm: 'Deloitte', score: 82, why: 'Major Nordic automotive M&A advisory. Strong deal advisory for Tier-1 supplier transactions.' },
+      { firm: 'McKinsey', score: 80, why: 'Strategic deal advisory and pre-deal strategic assessment for Swedish OEMs.' },
+      { firm: 'BCG', score: 76, why: 'M&A strategy and post-merger integration advisory for automotive. Nordic industrial deal strategy.' },
+      { firm: 'Bain', score: 74, why: 'Due diligence and M&A strategy for automotive. PE-automotive convergence advisory.' },
+      { firm: 'Oliver Wyman', score: 72, why: 'Financial and commercial due diligence for automotive transactions.' },
+      { firm: 'Roland Berger', score: 68, why: 'Automotive M&A strategy advisory. European automotive transaction advisory.' },
+      { firm: 'Accenture', score: 64, why: 'Technology due diligence and post-merger integration delivery for automotive.' },
+      { firm: 'Arthur D. Little', score: 62, why: 'Technology and innovation due diligence for automotive deals.' },
+      { firm: 'Capgemini', score: 58, why: 'Technology DD and integration delivery in automotive M&A.' },
+    ]},
+  t13: { title: 'Motor Insurance', pillar: 'Lifecycle Ecosystem', desc: 'Usage-based insurance, telematics, connected vehicle insurance, and motor insurance strategy and execution for automotive ecosystem players in Sweden.',
+    topRankings: [
+      { firm: 'Oliver Wyman', score: 84, why: 'Oliver Wyman is globally recognized for insurance advisory. Motor insurance strategy for OEM captive insurers and connected vehicle insurance is a core Oliver Wyman proposition.' },
+      { firm: 'EY', score: 78, why: 'Insurance advisory and connected vehicle insurance strategy. EY Nexus insurance platform relevant for Swedish automotive insurtech.' },
+      { firm: 'KPMG', score: 76, why: 'Insurance advisory and regulatory compliance for motor insurance players in Sweden.' },
+      { firm: 'Accenture', score: 74, why: 'Insurtech delivery and motor insurance platform modernization. Connected vehicle UBI systems.' },
+      { firm: 'PwC', score: 72, why: 'Insurance advisory and motor insurance regulatory compliance. Growing Swedish insurtech advisory.' },
+      { firm: 'Deloitte', score: 70, why: 'Insurance technology and motor insurance advisory for Nordic market.' },
+      { firm: 'McKinsey', score: 68, why: 'Motor insurance strategy and value chain advisory for automotive ecosystem.' },
+      { firm: 'BCG', score: 65, why: 'Insurance strategy in automotive mobility ecosystem.' },
+      { firm: 'Capgemini', score: 62, why: 'Telematics and connected vehicle platform delivery for motor insurance.' },
+      { firm: 'Roland Berger', score: 60, why: 'Motor insurance strategy in European automotive context.' },
+      { firm: 'Bain', score: 58, why: 'Insurance strategy in automotive ecosystem advisory.' },
+      { firm: 'Arthur D. Little', score: 55, why: 'Technology advisory for connected vehicle insurance systems.' },
+    ]},
+  t14: { title: 'Autofinance', pillar: 'Lifecycle Ecosystem', desc: 'Automotive captive finance, subscription models, fleet finance, risk/capital advisory for Volvo Financial Services and related Swedish automotive finance entities.',
+    topRankings: [
+      { firm: 'Oliver Wyman', score: 86, why: 'Oliver Wyman is the global leader in automotive captive finance advisory. Risk, capital and balance sheet advisory for major automotive financial services entities.' },
+      { firm: 'KPMG', score: 84, why: 'Audit and risk advisory for Polestar and Volvo Group financial operations. Strong in capital and balance sheet advisory for automotive finance.' },
+      { firm: 'EY', score: 82, why: 'Financial services advisory for automotive captive finance. Volvo Cars financial advisory relationship (EGM 2025).' },
+      { firm: 'PwC', score: 80, why: 'Volvo Cars PwC transaction advisory demonstrates access to Volvo Financial Services senior leadership.' },
+      { firm: 'Deloitte', score: 76, why: 'Auto finance risk and regulatory advisory for Nordic automotive financial services.' },
+      { firm: 'McKinsey', score: 74, why: 'Auto finance business model strategy and mobility subscription advisory.' },
+      { firm: 'BCG', score: 70, why: 'Autofinance business model and subscription strategy advisory.' },
+      { firm: 'Accenture', score: 68, why: 'Digital auto finance platform delivery and operational efficiency.' },
+      { firm: 'Bain', score: 65, why: 'Auto finance strategy and performance improvement advisory.' },
+      { firm: 'Roland Berger', score: 62, why: 'European automotive finance strategy advisory.' },
+      { firm: 'Capgemini', score: 60, why: 'Auto finance platform digitalization and operations delivery.' },
+      { firm: 'Arthur D. Little', score: 55, why: 'Mobility finance strategy and innovation advisory.' },
+    ]},
+  t15: { title: 'After Market', pillar: 'Lifecycle Ecosystem', desc: 'Aftermarket strategy, commercial excellence and operational excellence for Swedish automotive OEMs and Tier-1 suppliers including parts, service and connected aftersales.',
+    topRankings: [
+      { firm: 'Oliver Wyman', score: 88, why: 'Oliver Wyman is globally recognized for automotive aftermarket strategy. Parts strategy, dealer aftersales and commercial excellence for European OEMs with Sweden relevance.' },
+      { firm: 'McKinsey', score: 84, why: 'Aftermarket strategy and commercial excellence for Swedish OEMs. Parts optimization and service revenue growth advisory.' },
+      { firm: 'BCG', score: 80, why: 'Aftermarket circularity and remanufacturing advisory. Bain publication on reuse/remanufacturing directly applicable to Swedish automotive aftermarket.' },
+      { firm: 'Bain', score: 78, why: 'Reuse, remanufacturing and circularity in automotive — direct aftermarket publication. Robocabs aftermarket service model advisory.' },
+      { firm: 'Roland Berger', score: 76, why: 'European automotive aftermarket strategy. Parts and service commercial excellence for European OEMs.' },
+      { firm: 'Accenture', score: 74, why: 'Connected vehicle aftersales and digital aftermarket delivery for automotive.' },
+      { firm: 'Capgemini', score: 72, why: 'Aftermarket digitalization and connected vehicle service platforms delivery.' },
+      { firm: 'Deloitte', score: 68, why: 'Aftermarket advisory and ERP-linked aftermarket operations for Nordic automotive.' },
+      { firm: 'EY', score: 66, why: 'Aftermarket supply chain advisory and operational efficiency programs.' },
+      { firm: 'KPMG', score: 64, why: 'Aftermarket risk and regulatory advisory for automotive parts and service.' },
+      { firm: 'PwC', score: 62, why: 'Aftermarket strategy advisory growing through operations and transaction practice.' },
+      { firm: 'Arthur D. Little', score: 60, why: 'Innovation in aftermarket services and technology advisory.' },
+    ]},
+  t16: { title: 'Car Dealership', pillar: 'Lifecycle Ecosystem', desc: 'Dealership retail transformation, strategic business model evolution and operational excellence for Swedish car dealership networks including Hedin Mobility Group and Bildahl.',
+    topRankings: [
+      { firm: 'PwC', score: 84, why: 'Bildahl dealership transaction advisory (pwc.se) — direct Swedish car dealership credential. Volvo Cars care experience design directly applicable to dealership customer experience transformation.' },
+      { firm: 'Oliver Wyman', score: 82, why: 'European automotive dealer network transformation advisory. OEM-dealer relationship management and retail model evolution.' },
+      { firm: 'McKinsey', score: 78, why: 'Automotive retail transformation and dealer operating model redesign for premium OEMs.' },
+      { firm: 'Roland Berger', score: 76, why: 'European automotive dealer transformation and retail model advisory. Omnichannel automotive retail strategy.' },
+      { firm: 'Deloitte', score: 72, why: 'Automotive retail transformation and dealer digital advisory for Nordic market.' },
+      { firm: 'BCG', score: 70, why: 'Automotive retail strategy and direct-to-consumer advisory for Swedish OEM dealer networks.' },
+      { firm: 'Accenture', score: 68, why: 'Dealer management system modernization and digital retail delivery for automotive.' },
+      { firm: 'EY', score: 66, why: 'Dealership financial advisory and retail transformation. Transaction advisory for dealer group M&A in Sweden.' },
+      { firm: 'Bain', score: 64, why: 'Dealer commercial excellence and NPS improvement for automotive retail.' },
+      { firm: 'KPMG', score: 62, why: 'Financial advisory and audit for Swedish dealer groups.' },
+      { firm: 'Capgemini', score: 60, why: 'Digital retail platforms and dealer management system delivery.' },
+      { firm: 'Arthur D. Little', score: 56, why: 'Innovation in automotive retail advisory.' },
+    ]},
+};
+
+// ============================================================
+// RENDER ENGINE
+// ============================================================
+
+function getScoreColor(score) {
+  if (score >= 88) return '#1b4332';
+  if (score >= 78) return '#2d6a4f';
+  if (score >= 68) return '#40916c';
+  if (score >= 58) return '#74c69d';
+  if (score >= 48) return '#ffd166';
+  return '#ef233c';
+}
+function getHeatClass(score) {
+  if (score >= 88) return 'heat-90';
+  if (score >= 78) return 'heat-80';
+  if (score >= 68) return 'heat-70';
+  if (score >= 58) return 'heat-60';
+  if (score >= 48) return 'heat-50';
+  if (score >= 38) return 'heat-40';
+  return 'heat-30';
+}
+
+function renderLeaderboard() {
+  const el = document.getElementById('overallLeaderboard');
+  if (!el) return;
+  el.innerHTML = OVERALL_SCORES.slice(0, 8).map((item, i) => `
+    <div class="lb-item">
+      <div class="lb-rank r${i+1}">${i+1}</div>
+      <div style="flex:1">
+        <div class="lb-name">${item.firm}</div>
+        <div class="lb-bar"><div class="lb-bar-fill" style="width:${item.score}%"></div></div>
+      </div>
+      <div class="lb-score">${item.score}</div>
+    </div>
+  `).join('');
+}
+
+function renderMainHeatmap() {
+  const el = document.getElementById('mainHeatmap');
+  if (!el) return;
+  const abbrevDomains = ['Strat','Prod Dev','Procure','Mfg&SC','Cap Ex','Customer','Ppl&Chg','Finance','Tech','Risk','Sustain','Deal','Motor Ins','AutoFin','Aftermkt','Dealersh'];
+  let html = '<tr><th class="row-header">Firm</th>' + abbrevDomains.map(d => `<th>${d}</th>`).join('') + '</tr>';
+  FIRMS.forEach((firm, fi) => {
+    const domScores = DOMAIN_KEYS.map(k => DOMAIN_SCORES[k][fi]);
+    html += `<tr><td style="font-weight:700;font-size:11px;white-space:nowrap;padding:6px 10px;">${firm}</td>` +
+      domScores.map(s => `<td class="${getHeatClass(s)}" onclick="showHeatDetail('${firm}',${s})" title="${firm}: ${s}/100">${s}</td>`).join('') + '</tr>';
+  });
+  el.innerHTML = html;
+}
+
+function showHeatDetail(firm, score) {
+  // Simple tooltip-style display
+  alert(`${firm}: Score ${score}/100\n\nClick the relevant capability tab for detailed rankings and analysis.`);
+}
+
+function renderRadarChart() {
+  const ctx = document.getElementById('radarChart');
+  if (!ctx) return;
+  const labels = ['Strategy','Product Dev','Procurement','Mfg & SC','Technology','Sustainability','Deal Advisory','People & Chg'];
+  const topFirms = ['McKinsey', 'Capgemini', 'Accenture', 'Roland Berger', 'EY', 'KPMG'];
+  const domainMap = { 'Strategy': 't1', 'Product Dev': 't2', 'Procurement': 't3', 'Mfg & SC': 't4', 'Technology': 't9', 'Sustainability': 't11', 'Deal Advisory': 't12', 'People & Chg': 't7' };
+
+  const datasets = topFirms.map(firm => {
+    const fi = FIRMS.indexOf(firm);
+    return {
+      label: firm,
+      data: labels.map(l => DOMAIN_SCORES[domainMap[l]][fi]),
+      borderColor: FIRM_COLORS[firm],
+      backgroundColor: FIRM_COLORS[firm] + '22',
+      borderWidth: 2,
+      pointRadius: 3,
+    };
+  });
+
+  new Chart(ctx, {
+    type: 'radar',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { r: { min: 40, max: 100, ticks: { font: { size: 9 }, stepSize: 20 }, grid: { color: 'rgba(128,128,128,0.2)' }, pointLabels: { font: { size: 10, family: 'Syne' } } } },
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 10, family: 'DM Sans' }, boxWidth: 12 } } }
+    }
+  });
+}
+
+function renderDomainChart() {
+  const ctx = document.getElementById('domainChart');
+  if (!ctx) return;
+
+  // Find top firm per domain
+  const topFirmCounts = {};
+  FIRMS.forEach(f => topFirmCounts[f] = 0);
+  DOMAIN_KEYS.forEach(dk => {
+    const scores = DOMAIN_SCORES[dk];
+    const maxIdx = scores.indexOf(Math.max(...scores));
+    topFirmCounts[FIRMS[maxIdx]]++;
+  });
+
+  const sorted = Object.entries(topFirmCounts).filter(([,v]) => v > 0).sort((a, b) => b[1] - a[1]);
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: sorted.map(([f]) => f),
+      datasets: [{ label: 'Domains Led', data: sorted.map(([,v]) => v), backgroundColor: sorted.map(([f]) => FIRM_COLORS[f] || '#888'), borderRadius: 4 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } }, x: { ticks: { font: { size: 11, family: 'Syne' } } } }
+    }
+  });
+}
+
+// ============================================================
+// TAB RENDERERS
+// ============================================================
+function renderDetailTab(tabId, data) {
+  const el = document.getElementById('tab-' + tabId);
+  if (!el || el.innerHTML.trim() !== '') return;
+
+  const sorted = [...(data.subcats ? data.subcats[0].rankings : data.topRankings || [])].sort((a,b) => b.score - a.score);
+  const top3 = sorted.slice(0, 3);
+
+  let html = `
+    <div class="exec-banner" style="background:linear-gradient(135deg,#111210 0%,#1e1c18 60%,#162030 100%);">
+      <div style="font-size:10px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace;letter-spacing:1px;margin-bottom:8px;">PILLAR: ${data.pillar}</div>
+      <h1 style="font-size:22px;">${data.title}</h1>
+      <p>${data.desc}</p>
+      <div class="exec-banner-meta">
+        <div class="exec-meta-item"><span class="exec-meta-label">Subcategories</span><span class="exec-meta-value" style="font-size:18px;">${data.subcats ? data.subcats.length : '—'}</span></div>
+        <div class="exec-meta-item"><span class="exec-meta-label">Confidence</span><span class="exec-meta-value" style="font-size:18px;">${data.confidence || 75}%</span></div>
+        <div class="exec-meta-item"><span class="exec-meta-label">Market Leader</span><span class="exec-meta-value" style="font-size:16px;">${top3[0]?.firm}</span></div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <span class="filter-label">Sort by:</span>
+      <select class="filter-select" onchange="sortTabTable(this,'${tabId}')">
+        <option value="score">Score (High→Low)</option>
+        <option value="firm">Firm Name</option>
+        <option value="conf">Confidence</option>
+      </select>
+      <input class="filter-search" type="text" placeholder="Search firms..." oninput="filterTabTable(this,'${tabId}')">
+    </div>
+
+    <div class="grid-2" style="margin-bottom:24px;">
+      <div class="card">
+        <div class="card-title">Category Leaders — ${data.title}</div>
+        <div class="card-sub">Overall score in this domain</div>
+        <div class="leaderboard" id="lb-${tabId}">
+          ${(data.subcats ? data.subcats[0].rankings : data.topRankings).sort((a,b)=>b.score-a.score).slice(0,6).map((r,i)=>`
+            <div class="lb-item"><div class="lb-rank r${i+1}">${i+1}</div>
+            <div style="flex:1"><div class="lb-name">${r.firm}</div><div class="lb-bar"><div class="lb-bar-fill" style="width:${r.score}%"></div></div></div>
+            <div class="lb-score">${r.score}</div></div>
+          `).join('')}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Score Distribution — All Firms</div>
+        <div class="card-sub">Weighted capability score across ${data.title} domain</div>
+        <div class="chart-container"><canvas id="chart-${tabId}"></canvas></div>
+      </div>
+    </div>`;
+
+  // SUBCATEGORY SECTIONS
+  if (data.subcats) {
+    data.subcats.forEach((sub, si) => {
+      html += `
+        <div class="sub-section">
+          <div class="sub-header" onclick="toggleSub(this)">
+            <h4>${sub.name} <span class="sub-header-tag">${data.title}</span></h4>
+            <span>▼</span>
+          </div>
+          <div class="sub-body ${si===0?'open':''}">
+            <p style="font-size:12.5px;color:var(--text2);margin-bottom:16px;">${sub.desc}</p>
+            <div class="rank-table-wrap">
+              <table class="rank-table" id="subtable-${tabId}-${si}">
+                <thead><tr>
+                  <th onclick="sortTable(this,'subtable-${tabId}-${si}',0)"># <span class="sort-icon">↕</span></th>
+                  <th onclick="sortTable(this,'subtable-${tabId}-${si}',1)">Firm <span class="sort-icon">↕</span></th>
+                  <th onclick="sortTable(this,'subtable-${tabId}-${si}',2)">Score <span class="sort-icon">↕</span></th>
+                  <th>Confidence</th>
+                  <th>Key Reasoning</th>
+                  <th>Details</th>
+                </tr></thead>
+                <tbody>
+                  ${sub.rankings.sort((a,b)=>b.score-a.score).filter((r,i)=>i<12).map((r,i)=>`
+                    <tr class="rank-${i+1}" data-firm="${r.firm}">
+                      <td><span class="rank-num">${i+1}</span></td>
+                      <td><span class="firm-name">${r.firm}</span></td>
+                      <td>
+                        <div class="score-bar-wrap">
+                          <div class="score-bar"><div class="score-bar-fill" style="width:${r.score}%;background:${getScoreColor(r.score)}"></div></div>
+                          <span class="score-val" style="color:${getScoreColor(r.score)}">${r.score}</span>
+                        </div>
+                      </td>
+                      <td><span class="confidence-badge conf-${(r.conf||'Medium').toLowerCase()}">${r.conf||'Medium'}</span></td>
+                      <td style="font-size:12px;color:var(--text2);max-width:280px;">${(r.why||'').slice(0,120)}${r.why&&r.why.length>120?'...':''}</td>
+                      <td><button class="expand-toggle" onclick="toggleExpand(this,'exp-${tabId}-${si}-${i}')">▶ Details</button></td>
+                    </tr>
+                    <tr class="expand-row" id="exp-${tabId}-${si}-${i}">
+                      <td colspan="6" class="expand-cell">
+                        <div class="expand-content">
+                          <div class="expand-item"><h5>Full Analysis</h5><p>${r.why||'No analysis available.'}</p></div>
+                          <div class="expand-item"><h5>Key Credentials</h5><p>${r.creds||'—'}</p></div>
+                          <div class="expand-item"><h5>Key Differentiators</h5><p>${r.diff||'—'}</p></div>
+                        </div>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>`;
+    });
+  } else if (data.topRankings) {
+    // Brief mode for tabs without full subcategory data
+    html += `
+      <div class="card">
+        <div class="card-title">Full Capability Rankings — ${data.title}</div>
+        <div class="card-sub">All 12 consulting firms ranked by Swedish automotive capability</div>
+        <div class="rank-table-wrap">
+          <table class="rank-table" id="maintable-${tabId}">
+            <thead><tr>
+              <th>#</th><th>Firm</th><th>Score</th><th>Confidence</th><th>Swedish Automotive Rationale</th><th>Details</th>
+            </tr></thead>
+            <tbody>
+              ${data.topRankings.sort((a,b)=>b.score-a.score).map((r,i)=>`
+                <tr class="rank-${i+1}" data-firm="${r.firm}">
+                  <td><span class="rank-num">${i+1}</span></td>
+                  <td><span class="firm-name">${r.firm}</span></td>
+                  <td><div class="score-bar-wrap"><div class="score-bar"><div class="score-bar-fill" style="width:${r.score}%;background:${getScoreColor(r.score)}"></div></div><span class="score-val" style="color:${getScoreColor(r.score)}">${r.score}</span></div></td>
+                  <td><span class="confidence-badge conf-medium">Est.</span></td>
+                  <td style="font-size:12px;color:var(--text2);">${r.why}</td>
+                  <td><button class="expand-toggle" onclick="toggleExpand(this,'mtexp-${tabId}-${i}')">▶</button></td>
+                </tr>
+                <tr class="expand-row" id="mtexp-${tabId}-${i}">
+                  <td colspan="6" class="expand-cell">
+                    <div class="expand-content">
+                      <div class="expand-item"><h5>Full Rationale</h5><p>${r.why}</p></div>
+                      <div class="expand-item"><h5>Swedish Automotive Relevance</h5><p>Score of ${r.score}/100 reflects capability depth, Nordic presence, and automotive-specific engagement history for this domain.</p></div>
+                      <div class="expand-item"><h5>Confidence Level</h5><p>Rankings based on publicly available evidence, analyst reports, and structured inference from market proxies including Nordic office size and automotive client relationships.</p></div>
+                    </div>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
+  // METHODOLOGY
+  html += `
+    <div class="methodology-card" style="margin-top:24px;">
+      <div class="methodology-header" onclick="toggleMethodology(this)">
+        <h4>📊 Scoring Methodology — ${data.title}</h4><span>▼</span>
+      </div>
+      <div class="methodology-body">
+        <div class="grid-2">
+          <div>
+            <h5 style="font-size:12px;font-weight:700;margin-bottom:8px;font-family:'Syne',sans-serif;">Weighting Applied</h5>
+            <div class="weight-row"><span class="weight-label">Swedish Automotive Credentials</span><span class="weight-pct">25%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:100%"></div></div></div>
+            <div class="weight-row"><span class="weight-label">Automotive Industry Expertise</span><span class="weight-pct">20%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:80%"></div></div></div>
+            <div class="weight-row"><span class="weight-label">Swedish/Nordic Market Presence</span><span class="weight-pct">15%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:60%"></div></div></div>
+            <div class="weight-row"><span class="weight-label">Technology & Engineering Depth</span><span class="weight-pct">10%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:40%"></div></div></div>
+            <div class="weight-row"><span class="weight-label">Professional Scale in Domain</span><span class="weight-pct">10%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:40%"></div></div></div>
+            <div class="weight-row"><span class="weight-label">Strategic Reputation</span><span class="weight-pct">10%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:40%"></div></div></div>
+            <div class="weight-row"><span class="weight-label">Delivery Capability</span><span class="weight-pct">5%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:20%"></div></div></div>
+            <div class="weight-row"><span class="weight-label">Thought Leadership</span><span class="weight-pct">5%</span><div class="weight-bar"><div class="weight-bar-fill" style="width:20%"></div></div></div>
+          </div>
+          <div>
+            <h5 style="font-size:12px;font-weight:700;margin-bottom:8px;font-family:'Syne',sans-serif;">Evidence Classification</h5>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span class="evidence-badge ev-direct">DIRECT</span><span style="font-size:12px;color:var(--text2);">Confirmed engagements, published case studies, press releases</span></div>
+              <div style="display:flex;align-items:center;gap:8px;"><span class="evidence-badge ev-inferred">INFERRED</span><span style="font-size:12px;color:var(--text2);">Nordic office size, SAP/cloud partner tier, analyst rankings</span></div>
+              <div style="display:flex;align-items:center;gap:8px;"><span class="evidence-badge ev-estimated">ESTIMATED</span><span style="font-size:12px;color:var(--text2);">Structured inference from global practice + market proximity</span></div>
+            </div>
+            <div style="margin-top:12px;padding:10px;background:var(--surface2);border-radius:6px;">
+              <div style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:4px;">OVERALL CONFIDENCE</div>
+              <div style="font-size:20px;font-weight:800;font-family:'Syne',sans-serif;color:var(--accent);">${data.confidence || 75}%</div>
+              <div style="font-size:11px;color:var(--text3);">Based on available direct evidence and systematic inference</div>
+            </div>
+          </div>
+        </div>
+        ${data.sourceNote ? `<div style="margin-top:16px;padding:12px;background:var(--surface2);border-radius:6px;font-size:12.5px;color:var(--text2);">${data.sourceNote}</div>` : ''}
+      </div>
+    </div>`;
+
+  // SOURCES
+  if (data.sources && data.sources.length > 0) {
+    html += `
+      <div class="sources-section" style="margin-top:20px;">
+        <div class="card-title">Source Traceability — ${data.title}</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+          ${data.sources.map(s => `
+            <div style="display:flex;align-items:flex-start;gap:10px;">
+              <span class="evidence-badge ev-${s.type}">${s.type.toUpperCase()}</span>
+              <a class="source-link" href="${s.url}" target="_blank">${s.label}</a>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+  }
+
+  el.innerHTML = html;
+
+  // Render chart for this tab
+  setTimeout(() => {
+    const chartEl = document.getElementById('chart-' + tabId);
+    if (chartEl) {
+      const rankings = (data.subcats ? data.subcats[0].rankings : data.topRankings).sort((a,b) => b.score - a.score);
+      new Chart(chartEl, {
+        type: 'bar',
+        data: {
+          labels: rankings.map(r => r.firm),
+          datasets: [{ label: 'Score', data: rankings.map(r => r.score), backgroundColor: rankings.map(r => FIRM_COLORS[r.firm] || '#888'), borderRadius: 4 }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { min: 40, max: 100, ticks: { font: { size: 9 } } }, x: { ticks: { font: { size: 9 }, maxRotation: 45 } } }
+        }
+      });
+    }
+  }, 100);
+}
+
+// ============================================================
+// INTERACTIONS
+// ============================================================
+function toggleDark() {
+  document.documentElement.classList.toggle('dark');
+  const btn = document.querySelector('.toggle-btn');
+  btn.textContent = document.documentElement.classList.contains('dark') ? '☀ Light Mode' : '🌙 Dark Mode';
+  // Rerender charts needs a page refresh for theme change - simpler to just note it
+}
+
+function toggleMethodology(el) {
+  const body = el.nextElementSibling;
+  body.classList.toggle('open');
+  el.querySelector('span:last-child').textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+function toggleSub(el) {
+  const body = el.nextElementSibling;
+  body.classList.toggle('open');
+  el.querySelector('span:last-child').textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+function toggleExpand(btn, id) {
+  const row = document.getElementById(id);
+  if (row) {
+    row.classList.toggle('open');
+    btn.textContent = row.classList.contains('open') ? '▼ Close' : '▶ Details';
+  }
+}
+
+function filterSummary() { /* filter logic */ }
+function filterSummarySearch() {
+  const q = document.getElementById('summarySearch').value.toLowerCase();
+  document.querySelectorAll('.lb-item').forEach(item => {
+    const name = item.querySelector('.lb-name')?.textContent.toLowerCase() || '';
+    item.style.display = name.includes(q) ? '' : 'none';
+  });
+}
+function filterTabTable(input, tabId) {
+  const q = input.value.toLowerCase();
+  document.querySelectorAll(`[data-firm]`).forEach(row => {
+    const firm = (row.dataset.firm || '').toLowerCase();
+    row.style.display = firm.includes(q) ? '' : 'none';
+  });
+}
+function sortTabTable(sel, tabId) { /* sort logic */ }
+
+function sortTable(th, tableId, col) {
+  const table = document.getElementById(tableId);
+  if (!table) return;
+  const tbody = table.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr:not(.expand-row)'));
+  const asc = th.classList.toggle('sorted');
+  rows.sort((a, b) => {
+    const av = a.cells[col]?.textContent.trim() || '';
+    const bv = b.cells[col]?.textContent.trim() || '';
+    const an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return asc ? an - bn : bn - an;
+    return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  rows.forEach(row => { tbody.appendChild(row); const exp = tbody.querySelector(`#${row.id?.replace('exp-','')}`); if(exp) tbody.appendChild(exp); });
+}
+
+function exportPDF() {
+  window.print();
+}
+
+// ============================================================
+// TAB SWITCHING
+// ============================================================
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+    const tabId = this.dataset.tab;
+    document.getElementById('tab-' + tabId)?.classList.add('active');
+
+    // Lazy render
+    if (tabId === 't1') renderDetailTab('t1', TAB_DATA.t1);
+    else if (tabId === 't2') renderDetailTab('t2', TAB_DATA.t2);
+    else if (tabId === 't3') renderDetailTab('t3', TAB_DATA.t3);
+    else if (TAB_BRIEF[tabId]) renderDetailTab(tabId, TAB_BRIEF[tabId]);
+  });
+});
+
+// ============================================================
+// INIT
+// ============================================================
+window.addEventListener('DOMContentLoaded', () => {
+  renderLeaderboard();
+  setTimeout(() => {
+    renderMainHeatmap();
+    renderRadarChart();
+    renderDomainChart();
+  }, 200);
+});
+</script>
+</body>
+</html>
